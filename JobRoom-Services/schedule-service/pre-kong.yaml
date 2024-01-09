@@ -1,0 +1,18 @@
+_format_version: "1.1"
+_info:
+  select_tags:
+    - manage-by-deck
+    - pre-schedule-service
+services:
+- name: pre-schedule-service
+  url: http://35.197.132.204:31008
+  routes:
+  - name: pre-schedule-route
+    hosts:
+    - 34.87.36.136
+    paths:
+    - /pre/schedule
+    strip_path: true
+plugins:
+- name: syslog
+  service: pre-schedule-service

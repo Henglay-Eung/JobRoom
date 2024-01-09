@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~bootstrap/dist/css/bootstrap.css" */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+.cdk-global-overlay-wrapper,
+.cdk-overlay-container {
+  z-index: 10000 !important;
+}
+/* .cal-month-view .cal-open-day-events {
+  color: #919191;
+  background-color: #00abe1;
+  box-shadow: none;
+} */
+.cal-week-view{
+  font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.cal-month-view .cal-event-title {
+  cursor: pointer;
+  font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.fa-trash-alt:before {
+  content: "\f2ed";
+  color: #00abe1;
+}
+.fa-trash-alt:before {
+  content: "\f2ed";
+  color: #00abe1;
+}
+.fa-trash-alt:before {
+  content: "\f2ed";
+  color: #00abe1;
+}
+
+.fa-pencil-alt:before {
+  content: "\f303";
+  color: #00abe1;
+}
+
+.fa-pencil-alt:before {
+  content: "\f303";
+  color: #00abe1;
+}
+.fa-pencil-alt:before {
+  content: "\f303";
+  color: #00abe1;
+}
+
+.timepicker-overlay{
+  z-index: 1000000 !important;
+}
+
+.timepicker-backdrop-overlay{
+  z-index: 1000000 !important;
+}
+
+.modal-md{
+  z-index: 9999999999999;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.avatar{
+  height: none !important;
+}
+.avatar-xl{
+  height: none !important;
+}
+.card-profile .card-header{
+  height: none !important;
+}

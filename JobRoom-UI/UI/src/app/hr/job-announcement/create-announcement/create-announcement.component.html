@@ -1,0 +1,606 @@
+<simple-notifications></simple-notifications>
+<ngx-loading [show]="myLoading" [template]="customLoadingTemplate"></ngx-loading>
+<div class="col-xl-12" style="padding: 0">
+    <div class="row">
+        <div class="col-xl-6 bread">
+            <span>{{ 'job_announcement' | translate }} / {{ 'active_announcement' | translate }}</span>
+        </div>
+        <div class="col-xl-6">
+            <button type="submit" class="btn-create" (click)="onSubmit()">
+        {{ 'save' | translate }}
+      </button>
+            <button class="btn-create" (click)="onSaveDraft()">
+        {{ 'save_draft' | translate }}
+      </button>
+            <button class="btn-create" (click)="onPreview()">
+        {{ 'preview' | translate }}
+      </button>
+        </div>
+    </div>
+</div>
+<div class="t-content">
+    <div class="row">
+        <div class="col-xl-12 a-content">
+            <div class="row">
+                <div class="col-xl-3">
+                    <div class="col-xl-12 a-left-side">
+                        <div class="col-xl-12 a-box">
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <div class="btn-add" (click)="onHideAndShowDialog()">
+                                        <span class="material-icons" dropdownToggle> add</span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-8 a-title f-m">{{ 'header' | translate }}</div>
+                            </div>
+                        </div>
+                        <div class="list-action action-header" *ngIf="isHideDialog">
+                            <ul>
+                                <li (click)="onHideAndShowTitle()" *ngIf="!isTitle">{{ 'title' | translate }} <i class="fas fa-asterisk required-field fa-xs"></i></li>
+                                <li (click)="onHideAndShowPosition()" *ngIf="!isPosition">
+                                    {{ 'position' | translate }} <i class="fas fa-asterisk required-field fa-xs"></i>
+                                </li>
+                                <li (click)="onHideAndShowCloseDate()" *ngIf="!isCloseDate">
+                                    {{ 'close_date' | translate }} <i class="fas fa-asterisk required-field fa-xs"></i>
+                                </li>
+                                <li (click)="onHideAndShowSalaryRange()" *ngIf="!isSalaryRange">
+                                    {{ 'salary_range' | translate }}
+                                </li>
+                                <li (click)="onHideAndShowYearOfEx()" *ngIf="!isYearOfEx">
+                                    {{ 'year_Of_experience' | translate }}
+                                </li>
+                                <li (click)="onHideAndShowNumberOfHiring()" *ngIf="!isNumberOfHiring">
+                                    {{ 'number_of_hiring' | translate }}
+                                </li>
+                                <li (click)="onHideAndShowType()" *ngIf="!isType"> {{ 'type' | translate }}</li>
+                                <li (click)="onHideAndShowIndustry()" *ngIf="!isIndustry">
+                                    {{ 'industry' | translate }}
+                                </li>
+                                <li (click)="onHideAndShowQualification()" *ngIf="!isQualification">
+                                    {{ 'qualification' | translate }}
+                                </li>
+                                <li (click)="onHideAndShowLanguage()" *ngIf="!isLanguage">
+                                    {{ 'language' | translate }}
+                                </li>
+                                <li (click)="onHideAndShowLocation()" *ngIf="!isLocation">
+                                    {{ 'location' | translate }}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-12 a-box">
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <div class="btn-add" (click)="onHideAndShowBody()">
+                                        <span class="material-icons"> add </span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-8 a-title f-m">{{ 'body' | translate }}</div>
+                            </div>
+                        </div>
+                        <div class="list-action action-body" *ngIf="isHideBody">
+                            <ul>
+                                <li (click)="onHideAndShowBackground()" *ngIf="!isBackground">
+                                    {{ 'background' | translate }}
+                                </li>
+                                <li (click)="onHideAndShowJobRequirement()" *ngIf="!isJobRequirement">
+                                    {{ 'job_requirement' | translate }}
+                                </li>
+                                <li (click)="onHideAndShowJobDescription()" *ngIf="!isJobDescription">
+                                    {{ 'job_description' | translate }}
+                                </li>
+                                <li (click)="onHideAndShowHowToApply()" *ngIf="!isHowToApply">
+                                    {{ 'how_to_apply' | translate }}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-12 a-box">
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <div class="btn-add" (click)="onHideAndShowFooter()">
+                                        <span class="material-icons"> add </span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-8 a-title f-m"> {{ 'footer' | translate }}</div>
+                            </div>
+                        </div>
+                        <div class="list-action action-footer" *ngIf="isHideFooter">
+                            <ul>
+                                <li (click)="onHideAndShowContact()" *ngIf="!isContact">
+                                    {{ 'contacts' | translate }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9" style="padding: 0;">
+                    <div class="col-xl-12 a-right-side">
+                        <form [formGroup]="JobAnounForm">
+                            <div formArrayName="header" class="header-main" *ngIf="isDisableHeader">
+                                <span class="head-title f-m">{{ 'header' | translate }}</span>
+                                <div class="header">
+                                    <div class="row">
+                                        <div class="col-xl-12" *ngIf="isTitle">
+                                            <div class="form-group">
+                                                <label class="f-m">{{ 'title' | translate }}</label>
+                                                <div class="row">
+                                                    <div class="col-sm-11">
+                                                        <input type="text" formControlName="title" name="title" class="form-control" placeholder="{{ 'title' | translate }}" autocomplete="off" [ngClass]="{
+                                'is-invalid':
+                                  !title?.valid &&
+                                  (title?.dirty || title?.touched)
+                              }" required />
+                                                        <div *ngIf="
+                                !title?.valid &&
+                                (title?.dirty || title?.touched)
+                              " class="invalid-feedback">
+                                                            <div *ngIf="title.errors.required" class="f-m">
+                                                                {{ 'title_is_required' | translate }}
+                                                            </div>
+                                                            <div *ngIf="title.errors.maxlength" class="f-m">
+                                                                {{ 'title_small_than_100_character' | translate }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div (click)="onHideAndShowTitle()" class="col-xl-1 btnRemoveJobInformation">
+                                                            <span class="material-icons">delete</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 m-t" *ngIf="isPosition">
+                                            <div class="form-group">
+                                                <label class="f-m">{{ 'position' | translate }}</label>
+                                                <div class="row">
+                                                    <div class="col-sm-11">
+                                                        <input type="text" formControlName="position" name="position" class="form-control" placeholder="{{ 'position' | translate }}" autocomplete="off" [ngClass]="{
+                                'is-invalid':
+                                  !position?.valid &&
+                                  (position?.dirty || position?.touched)
+                              }" required />
+                                                        <div *ngIf="
+                                !position?.valid &&
+                                (position?.dirty || position?.touched)
+                              " class="invalid-feedback">
+                                                            <div *ngIf="position.errors.required" class="f-m">
+                                                                {{ 'position_is_required' | translate }}
+                                                            </div>
+                                                            <div *ngIf="position.errors.maxlength" class="f-m">
+                                                                {{ 'position_small_than_100_character' | translate }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div (click)="onHideAndShowPosition()" class="col-xl-1 btnRemoveJobInformation">
+                                                            <span class="material-icons"> delete </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 m-t" *ngIf="isCloseDate">
+                                            <div class="form-group">
+                                                <label class="f-m"> {{ 'close_date' | translate }}</label>
+                                                <div class="row">
+                                                    <div class="col-sm-11">
+                                                        <input type="text" formControlName="close_date" class="form-control" #dp="bsDatepicker" [(ngModel)]="close_date" id="close_date" [bsConfig]="bsConfig" bsDatepicker autocomplete="off" />
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div (click)="onHideAndShowCloseDate()" class="col-xl-1 btnRemoveJobInformation">
+                                                            <span class="material-icons">delete </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 m-t" *ngIf="isSalaryRange">
+                                            <div class="form-group">
+                                                <label class="f-m"> {{ 'salary_range' | translate }}</label>
+                                                <div class="row">
+                                                    <div class="col-sm-11">
+                                                        <input type="text" formControlName="salary_range" name="salary_range" class="form-control" placeholder="{{ 'salary_range' | translate }}" autocomplete="off" [ngClass]="{
+                                'is-invalid':
+                                  !salaryRange?.valid &&
+                                  (salaryRange?.dirty || salaryRange?.touched)
+                              }" required />
+                                                        <div *ngIf="
+                                !salaryRange?.valid &&
+                                (salaryRange?.dirty || salaryRange?.touched)
+                              " class="invalid-feedback">
+                                                            <div *ngIf="salaryRange.errors.required" class="f-m">
+                                                                {{ 'salary_rang_is_required' | translate }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div (click)="onHideAndShowSalaryRange()" class="col-xl-1 btnRemoveJobInformation">
+                                                            <span class="material-icons">delete </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 m-t" *ngIf="isYearOfEx">
+                                            <div class="form-group">
+                                                <label class="f-m">{{ 'year_Of_experience' | translate }}</label>
+                                                <div class="row">
+                                                    <div class="col-sm-11">
+                                                        <input type="text" formControlName="year_of_ex" name="year_of_ex" class="form-control" placeholder="{{ 'year_Of_experience' | translate }}" autocomplete="off" [ngClass]="{
+                                'is-invalid':
+                                  !yearOfEx?.valid &&
+                                  (yearOfEx?.dirty || yearOfEx?.touched)
+                              }" required />
+                                                        <div *ngIf="
+                                !yearOfEx?.valid &&
+                                (yearOfEx?.dirty || yearOfEx?.touched)
+                              " class="invalid-feedback">
+                                                            <div *ngIf="yearOfEx.errors.required" class="f-m">
+                                                                {{ 'year_Of_experience_is_required' | translate }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div (click)="onHideAndShowYearOfEx()" class="col-xl-1 btnRemoveJobInformation">
+                                                            <span class="material-icons">delete</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 m-t" *ngIf="isNumberOfHiring">
+                                            <div class="form-group">
+                                                <label class="f-m">{{ 'number_of_hiring' | translate }}</label>
+                                                <div class="row">
+                                                    <div class="col-sm-11">
+                                                        <input type="text" formControlName="number_of_hiring" name="number_of_hiring" class="form-control" placeholder="{{ 'number_of_hiring' | translate }}" autocomplete="off" [ngClass]="{
+                                'is-invalid':
+                                  !numberOfHiring?.valid &&
+                                  (numberOfHiring?.dirty ||
+                                    numberOfHiring?.touched)
+                              }" required />
+                                                        <div *ngIf="
+                                !numberOfHiring?.valid &&
+                                (numberOfHiring?.dirty ||
+                                  numberOfHiring?.touched)
+                              " class="invalid-feedback">
+                                                            <div *ngIf="numberOfHiring.errors.required" class="f-m">
+                                                                {{ 'number_of_hiring_is_required' | translate }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div (click)="onHideAndShowNumberOfHiring()" class="col-xl-1 btnRemoveJobInformation">
+                                                            <span class="material-icons"> delete</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 m-t" *ngIf="isType">
+                                            <div class="form-group">
+                                                <label class="f-m"> {{ 'type' | translate }}</label>
+                                                <div class="row">
+                                                    <div class="col-sm-11">
+                                                        <select class="frm-control" formControlName="type" name="type">
+                              <option class="f-m" value="Full Time"> {{ 'full_time' | translate }}</option>
+                              <option class="f-m" value="Part Time"> {{ 'part_time' | translate }}</option>
+                              <option class="f-m" value="Internship"> {{ 'internship' | translate }}</option>
+                              <option class="f-m" value="Freelance"> {{ 'freelance' | translate }}</option>
+                            </select>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div (click)="onHideAndShowType()" class="col-xl-1 btnRemoveJobInformation">
+                                                            <span class="material-icons"> delete</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 m-t" *ngIf="isIndustry">
+                                            <div class="form-group">
+                                                <label class="f-m"> {{ 'industry' | translate }}</label>
+                                                <div class="row">
+                                                    <div class="col-sm-11">
+                                                        <input type="text" formControlName="industry" name="industry" class="form-control" placeholder=" {{ 'industry' | translate }}" autocomplete="off" [ngClass]="{
+                                'is-invalid':
+                                  !industry?.valid &&
+                                  (industry?.dirty || industry?.touched)
+                              }" required />
+                                                        <div *ngIf="
+                                !industry?.valid &&
+                                (industry?.dirty || industry?.touched)
+                              " class="invalid-feedback">
+                                                            <div *ngIf="industry.errors.required" class="f-m">
+                                                                {{ 'industry_is_required' | translate }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div (click)="onHideAndShowIndustry()" class="col-xl-1 btnRemoveJobInformation">
+                                                            <span class="material-icons"> delete</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 m-t" *ngIf="isQualification">
+                                            <div class="form-group">
+                                                <label class="f-m">{{ 'qualification' | translate }}</label>
+                                                <div class="row">
+                                                    <div class="col-sm-11">
+                                                        <input type="text" formControlName="qualification" name="qualification" class="form-control" placeholder="{{ 'qualification' | translate }}" autocomplete="off" [ngClass]="{
+                                'is-invalid':
+                                  !qualification?.valid &&
+                                  (qualification?.dirty ||
+                                    qualification?.touched)
+                              }" required />
+                                                        <div *ngIf="
+                                !qualification?.valid &&
+                                (qualification?.dirty || qualification?.touched)
+                              " class="invalid-feedback">
+                                                            <div *ngIf="qualification.errors.required" class="f-m">
+                                                                {{ 'qualification_is_required' | translate }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div (click)="onHideAndShowQualification()" class="col-xl-1 btnRemoveJobInformation">
+                                                            <span class="material-icons">delete </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 m-t" *ngIf="isLanguage">
+                                            <div class="form-group">
+                                                <label class="f-m">{{ 'language' | translate }}</label>
+                                                <div class="row">
+                                                    <div class="col-sm-11">
+                                                        <input type="text" formControlName="language" name="language" class="form-control" placeholder="{{ 'language' | translate }}" autocomplete="off" [ngClass]="{
+                                'is-invalid':
+                                  !language?.valid &&
+                                  (language?.dirty || language?.touched)
+                              }" required />
+                                                        <div *ngIf="
+                                !language?.valid &&
+                                (language?.dirty || language?.touched)
+                              " class="invalid-feedback">
+                                                            <div *ngIf="language.errors.required" class="f-m">
+                                                                {{ 'language_is_required' | translate }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div (click)="onHideAndShowLanguage()" class="col-xl-1 btnRemoveJobInformation">
+                                                            <span class="material-icons"> delete</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 m-t" *ngIf="isLocation">
+                                            <div class="form-group">
+                                                <label class="f-m">{{ 'location' | translate }}</label>
+                                                <div class="row">
+                                                    <div class="col-sm-11">
+                                                        <select class="frm-control" formControlName="location" name="location">
+                              <option
+                                *ngFor="let item of provinces"
+                                value="{{ item }}"
+                              >
+                                {{ item }}
+                              </option>
+                            </select>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div (click)="onHideAndShowLocation()" class="col-xl-1 btnRemoveJobInformation">
+                                                            <span class="material-icons"> delete</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="body" class="job-information" *ngIf="isDisableBody">
+                                <span class="head-title f-m">{{ 'body' | translate }}</span>
+                                <div class="job">
+                                    <div class="row">
+                                        <div *ngIf="isBackground" class="col-xl-12 job-information">
+                                            <span class="head-title f-m">{{ 'background' | translate }}</span>
+                                            <div class="job">
+                                                <div (click)="onHideAndShowBackground()" class="btnRemove">
+                                                    <span class="material-icons">clear </span>
+                                                </div>
+                                                <div style="margin-top: 10px">
+                                                    <textarea class="frm-control" formControlName="background" placeholder="{{ 'description' | translate }}" name="background" rows="4" [ngClass]="{
+                              'is-invalid':
+                                !background?.valid &&
+                                (background?.dirty || background?.touched)
+                            }" required></textarea>
+                                                    <div *ngIf="
+                              !background?.valid &&
+                              (background?.dirty || background?.touched)
+                            " class="invalid-feedback">
+                                                        <div *ngIf="background.errors.required" class="f-m">
+                                                            clear
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="isJobRequirement" formArrayName="job_requirement" class="col-xl-12 job-information">
+                                            <span class="head-title f-m">  {{ 'job_announcement' | translate }}</span>
+                                            <div class="job">
+                                                <div (click)="onHideAndShowJobRequirement()" class="btnRemove">
+                                                    <span class="material-icons">clear </span>
+                                                </div>
+                                                <div class="mainList">
+                                                    <label class="section-list f-m">  {{ 'list' | translate }}</label>
+                                                    <div class="list" *ngFor="
+                              let job of JobRequirement().controls;
+                              let i = index
+                            ">
+                                                        <div class="row">
+                                                            <div class="col-xl-10">
+                                                                <div class="form-group" style="padding: 0 !important" [formGroupName]="i">
+                                                                    <label class="f-m">List {{ i + 1 }}</label>
+                                                                    <input type="text" formControlName="list" name="list" class="form-control" placeholder="{{'list'| translate}}" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-2">
+                                                                <div class="row">
+                                                                    <div (click)="removeJobRequirement(i)" class="col-xl-1 btnRemoveList">
+                                                                        <span class="material-icons"> delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="action mx">
+                                                    <ul>
+                                                        <li (click)="addJobRequirement()">
+                                                            <span class="material-icons">list </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="isJobDescription" formArrayName="job_description" class="col-xl-12 job-information">
+                                            <span class="head-title f-m">{{ 'job_description' | translate }}</span>
+                                            <div class="job">
+                                                <div (click)="onHideAndShowJobDescription()" class="btnRemove">
+                                                    <span class="material-icons">clear</span>
+                                                </div>
+                                                <div class="mainList">
+                                                    <label class="section-list f-m">{{ 'lists' | translate }}</label>
+                                                    <div class="list" *ngFor="
+                              let job of JobDescription().controls;
+                              let i = index
+                            ">
+                                                        <div class="row">
+                                                            <div class="col-xl-10">
+                                                                <div class="form-group" style="padding: 0 !important" [formGroupName]="i">
+                                                                    <label class="f-m">List {{ i + 1 }}</label>
+                                                                    <input type="text" formControlName="list" name="list" class="form-control" placeholder="{{'list'| translate}}" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-2">
+                                                                <div class="row">
+                                                                    <div (click)="removeJobDescription(i)" class="col-xl-1 btnRemoveList">
+                                                                        <span class="material-icons"> delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="action mx">
+                                                    <ul>
+                                                        <li (click)="addJobDescription()">
+                                                            <span class="material-icons"> list </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="isHowToApply" class="col-xl-12 job-information">
+                                            <span class="head-title f-m">{{ 'how_to_apply' | translate }} </span>
+                                            <div class="job">
+                                                <div (click)="onHideAndShowHowToApply()" class="btnRemove">
+                                                    <span class="material-icons"> clear</span>
+                                                </div>
+                                                <div style="margin-top: 10px">
+                                                    <textarea class="frm-control" formControlName="how_to_apply" placeholder="{{'description'| translate}}" name="how_to_apply" rows="4" [ngClass]="{
+                              'is-invalid':
+                                !how_to_apply?.valid &&
+                                (how_to_apply?.dirty || how_to_apply?.touched)
+                            }" required></textarea>
+                                                    <div *ngIf="
+                              !how_to_apply?.valid &&
+                              (how_to_apply?.dirty || how_to_apply?.touched)
+                            " class="invalid-feedback">
+                                                        <div *ngIf="how_to_apply.errors.required" class="f-m">
+                                                            {{ 'how_to_apply_requirement' | translate }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="footer" class="job-information" *ngIf="isDisableFooter">
+                                <span class="head-title f-m"> {{ 'footer' | translate }}</span>
+                                <div class="job">
+                                    <div class="row">
+                                        <div formGroupName="contact" *ngIf="isContact" class="col-xl-12 job-information">
+                                            <span class="head-title f-m"> {{ 'contacts' | translate }}</span>
+                                            <div class="job">
+                                                <div (click)="onHideAndShowContact()" class="btnRemove">
+                                                    <span class="material-icons">  clear </span>
+                                                </div>
+                                                <div class="col-xl-12" style="padding: 0">
+                                                    <div class="form-group">
+                                                        <label class="f-m">{{ 'addresses' | translate }}</label>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <input type="text" formControlName="address" name="address" class="form-control" placeholder="{{ 'address' | translate }}" [ngClass]="{
+                                    'is-invalid':
+                                      !address?.valid &&
+                                      (address?.dirty ||
+                                      address?.touched)
+                                  }" required />
+                                                                <div *ngIf="
+                                    !address?.valid &&
+                                    (address?.dirty ||
+                                    address?.touched)
+                                  " class="invalid-feedback">
+                                                                    <div *ngIf="address.errors.required" class="f-m">
+                                                                        {{ 'Address_Is_Required' | translate }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-12 m-t" style="padding: 0">
+                                                    <div class="form-group">
+                                                        <label class="f-m"> {{ 'website' | translate }}</label>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <input type="text" formControlName="website" name="website" class="form-control" placeholder="{{ 'website' | translate }}" [ngClass]="{
+                                    'is-invalid':
+                                      !website?.valid &&
+                                      (website?.dirty ||
+                                      website?.touched)
+                                  }" required />
+                                                                <div *ngIf="
+                                    !website?.valid &&
+                                    (website?.dirty ||
+                                    website?.touched)
+                                  " class="invalid-feedback">
+                                                                    <div *ngIf="website.errors.required" class="f-m">
+                                                                        {{ 'website_is_required' | translate }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- {{ JobAnounForm.value | json }} -->

@@ -1,0 +1,85 @@
+_format_version: "1.1"
+_info:
+  select_tags:
+    - manage-by-deck
+    - schedule-service
+services:
+- name: schedule-service
+  url: http://35.197.132.204:30008/api/v1/
+  plugins:
+  - name: oauth2
+    config:
+      scopes:
+      - email
+      global_credentials: true
+      token_expiration: 864000
+      enable_implicit_grant: true
+      enable_password_grant: true
+      enable_authorization_code: true   
+      reuse_refresh_token: true
+      provision_key: "AU3p0FF7yU4mA8thdUGG8xdpOV45Iwjb"
+  - name: cors
+    config:
+     #preflight_continue: true
+     origins:
+     - '*'
+     headers:
+     - X-Requested-With
+     - Content-Type
+     - Authorization
+     - Origin, Accept
+     - Access-Control-Request-Method
+     - Access-Control-Request-Headers
+     methods:
+     - POST
+     - GET
+     - PUT
+     - OPTIONS
+     - DELETE
+     exposed_headers:
+     - X-Auth-Token
+     credentials: true
+     max_age: 3600
+  routes:
+  - name: schedule-route
+    hosts:
+    - 35.187.232.200
+    paths:
+    - /schedule
+    strip_path: true
+- name: schedule-service-image
+  url: http://35.197.132.204:30008/api/v1/image/
+  plugins:
+  - name: cors
+    config:
+     #preflight_continue: true
+     origins:
+     - '*'
+     headers:
+     - X-Requested-With
+     - Content-Type
+     - Authorization
+     - Origin, Accept
+     - Access-Control-Request-Method
+     - Access-Control-Request-Headers
+     methods:
+     - POST
+     - GET
+     - PUT
+     - OPTIONS
+     - DELETE
+     exposed_headers:
+     - X-Auth-Token
+     credentials: true
+     max_age: 3600
+  routes:
+  - name: schedule-route-image
+    hosts:
+    - 35.187.232.200
+    paths:
+    - /images/schedule
+    strip_path: true
+plugins:
+- name: syslog
+  service: schedule-service
+  service: schedule-service-image

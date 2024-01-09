@@ -1,0 +1,129 @@
+/*Profile Pic Start*/
+
+.picture-container {
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.picture {
+    padding: 10px;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #CCCCCC;
+    color: #FFFFFF;
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    font-family: "Roboto", "Siemreap", sans-serif;
+    margin-bottom: 20px;
+}
+
+.picture:hover {
+    border-color: #2ca8ff;
+}
+
+.content.ct-wizard-green .picture:hover {
+    border-color: #05ae0e;
+}
+
+.content.ct-wizard-blue .picture:hover {
+    border-color: #3472f7;
+}
+
+.content.ct-wizard-orange .picture:hover {
+    border-color: #ff9500;
+}
+
+.content.ct-wizard-red .picture:hover {
+    border-color: #ff3b30;
+}
+
+.picture input[type="file"] {
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0 !important;
+    top: 0;
+    width: 100%;
+    font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.picture-src {
+    width: 100%;
+    font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.icon-preview {
+    margin-right: 10px;
+    font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.profile-picture {
+    top: 10px;
+    font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.text-break-profile {
+    word-break: break-word;
+    font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.bread {
+    margin-bottom: 10px;
+    font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.bread span {
+    color: #919191;
+    cursor: pointer;
+    font-family: "Roboto", "Siemreap", sans-serif;
+    font-size: 15px;
+}
+
+.required-field {
+    color: red;
+    font-size: 8px;
+    margin-left: 2px;
+}
+
+.f-m {
+    font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.btn-create {
+    margin-top: -5px;
+    margin-bottom: 10px;
+    float: right;
+    background-color: #00abe1;
+    border: none;
+    color: #fff;
+    padding: 6px 15px;
+    border-radius: 3px;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.btn-brow {
+    background-color: #00abe1;
+    border: none;
+    color: #fff !important;
+    padding: 6px 15px;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-left: -8px;
+    cursor: pointer;
+    transition: .5s;
+    font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.jr-header {
+    height: auto !important;
+}
+
+.jr-profile {
+    position: unset;
+}

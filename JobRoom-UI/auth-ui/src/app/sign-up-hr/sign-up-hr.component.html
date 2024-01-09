@@ -1,0 +1,282 @@
+<div class="container">
+  <div class="row">
+    <div class="signup-back"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <!-- <div class="dropdown">
+        <select id="language" #locale (change)="changeLocale(locale.value)">
+          <option value="ar">ខ្មែរ</option>
+          <option value="en">English</option>
+        </select>
+      </div> -->
+      <h3 class="signin-text">Sign up to JobRoom</h3>
+      <span id="text-newaccount">Already a member?</span
+      ><span class="link-signup" (click)="toLogin()">Login</span>
+      <form
+        name="form"
+        [formGroup]="form"
+        (ngSubmit)="form.valid && onSubmit()"
+      >
+        <div class="form-group">
+          <label for="companyName">Company Name</label>
+          <input
+            type="text"
+            [ngClass]="{
+              'is-invalid': form.get('name').touched && form.get('name').invalid
+            }"
+            class="form-control"
+            formControlName="name"
+            placeholder="company name"
+            class="form-control"
+            required
+          />
+          <div *ngIf="form.get('name').touched && form.get('name').invalid">
+            <div class="error" *ngIf="form.get('name').errors.required">
+              Company Name is required
+            </div>
+            <div class="error" *ngIf="form.get('name').errors.pattern">
+              Company Name must input text
+            </div>
+            <div class="error" *ngIf="form.get('name').errors.maxlength">
+              Company Name must maxlength 50 character
+            </div>
+            <div class="error" *ngIf="form.get('name').errors.minlength">
+              Company Name must minlength 4 character
+            </div>
+          </div>
+          <br />
+          <!-- </div> -->
+          <!-- <div class="form-group"> -->
+          <label for="email">Email</label>
+          <input
+            type="email"
+            [ngClass]="{
+              'is-invalid':
+                form.get('primaryEmail').touched &&
+                form.get('primaryEmail').invalid
+            }"
+            class="form-control"
+            formControlName="primaryEmail"
+            placeholder="name@gmail.com"
+            class="form-control"
+            required
+          />
+          <div
+            *ngIf="
+              form.get('primaryEmail').touched &&
+              form.get('primaryEmail').invalid
+            "
+          >
+            <div class="error" *ngIf="form.get('primaryEmail').errors.required">
+              Email is required
+            </div>
+            <div
+              class="error"
+              *ngIf="form.get('primaryEmail').errors.primaryEmail"
+            >
+              Email input is incorrect
+            </div>
+          </div>
+          <br />
+          <!-- </div> -->
+
+          <!-- <div class="form-group"> -->
+          <label for="password">Password</label>
+          <input
+            type="password"
+            [ngClass]="{
+              'is-invalid':
+                form.get('password').touched && form.get('password').invalid
+            }"
+            class="form-control"
+            formControlName="password"
+            placeholder="password"
+            class="form-control"
+            required
+          />
+          <div
+            *ngIf="form.get('password').touched && form.get('password').invalid"
+          >
+            <div class="error" *ngIf="form.get('password').errors.required">
+              Password is required
+            </div>
+            <div class="error" *ngIf="form.get('password').errors.minlength">
+              Password must minlength 8 character
+            </div>
+            <div class="error" *ngIf="form.get('password').errors.maxlength">
+              Password must maxlength 20 charater
+            </div>
+          </div>
+          <br />
+          <!-- </div> -->
+          <!-- <div class="form-group"> -->
+          <label for="secondaryEmail">Secondary Email</label>
+          <input
+            type="email"
+            [ngClass]="{
+              'is-invalid':
+                form.get('secondaryEmail').touched &&
+                form.get('secondaryEmail').invalid
+            }"
+            class="form-control"
+            formControlName="secondaryEmail"
+            placeholder="contactName@gmail.com"
+            class="form-control"
+            required
+          />
+          <div
+            *ngIf="
+              form.get('secondaryEmail').touched &&
+              form.get('secondaryEmail').invalid
+            "
+          >
+            <div class="error" *ngIf="form.get('secondaryEmail').errors.required">
+              Secondary Email is required
+            </div>
+            <div class="error" *ngIf="form.get('secondaryEmail').errors.email">
+              Secondary Email input is incorrect
+            </div>
+          </div>
+          <br />
+          <!-- </div> -->
+          <!-- <div class="form-group"> -->
+          <label for="number">Phone Number</label>
+          <input
+            type="text"
+            [ngClass]="{
+              'is-invalid':
+                form.get('telephone').touched &&
+                form.get('telephone').invalid
+            }"
+            class="form-control"
+            formControlName="telephone"
+            placeholder="phone number"
+            class="form-control"
+            required
+          />
+          <div
+            *ngIf="
+              form.get('telephone').touched && form.get('telephone').invalid
+            "
+          >
+            <div class="error" *ngIf="form.get('telephone').errors.required">
+              Phone Number is required
+            </div>
+            <div class="error" *ngIf="form.get('telephone').errors.maxlength">
+              Phone Number maxlength 10 character
+            </div>
+          </div>
+          <br />
+          <!-- </div> -->
+          <!-- <div class="form-group"> -->
+          <label for="address">Street</label>
+          <input
+            type="text"
+            [ngClass]="{
+              'is-invalid':
+                form.get('street').touched && form.get('street').invalid
+            }"
+            class="form-control"
+            formControlName="street"
+            placeholder="street"
+            class="form-control"
+            required
+          />
+          <div
+            *ngIf="form.get('street').touched && form.get('street').invalid"
+          >
+            <div class="error" *ngIf="form.get('street').errors.required">
+              Street is required
+            </div>
+          </div>
+          <br />
+
+          <label for="address">Commune</label>
+          <input
+            type="text"
+            [ngClass]="{
+              'is-invalid':
+                form.get('commune').touched && form.get('commune').invalid
+            }"
+            class="form-control"
+            formControlName="commune"
+            placeholder="commune"
+            class="form-control"
+            required
+          />
+          <div
+            *ngIf="form.get('commune').touched && form.get('commune').invalid"
+          >
+            <div class="error" *ngIf="form.get('commune').errors.required">
+              Commune is required
+            </div>
+          </div>
+          <br />
+
+          <label for="address">District</label>
+          <input
+            type="text"
+            [ngClass]="{
+              'is-invalid':
+                form.get('district').touched && form.get('district').invalid
+            }"
+            class="form-control"
+            formControlName="district"
+            placeholder="district"
+            class="form-control"
+            required
+          />
+          <div
+            *ngIf="form.get('district').touched && form.get('district').invalid"
+          >
+            <div class="error" *ngIf="form.get('district').errors.required">
+              District is required
+            </div>
+          </div>
+          <br />
+
+
+          <label for="address">City</label>
+          <input
+            type="text"
+            [ngClass]="{
+              'is-invalid':
+                form.get('city').touched && form.get('city').invalid
+            }"
+            class="form-control"
+            formControlName="city"
+            placeholder="city"
+            class="form-control"
+            required
+          />
+          <div
+            *ngIf="form.get('city').touched && form.get('city').invalid"
+          >
+            <div class="error" *ngIf="form.get('city').errors.required">
+              City is required
+            </div>
+          </div>
+          <br />
+
+          <!-- </div> -->
+          <!-- <div class="form-group"> -->
+          <!-- <div class="form-group">
+                        <input type="submit" [disabled]="!form.valid" value="Create an account" class="form-control" />
+                    </div> -->
+
+          <input
+            type="submit"
+            class="signup-account"
+            value="Create an account"
+            class="form-control"
+          /><br />
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div class="back">
+        <img [src]="hrimage" class="img-fluid" alt="image" />
+      </div>
+    </div>
+  </div>
+</div>

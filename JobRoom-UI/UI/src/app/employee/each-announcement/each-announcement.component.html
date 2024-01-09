@@ -1,0 +1,77 @@
+<!-- list of job announcement -->
+
+<!--loading-->
+<app-card-skeleton
+  *ngIf="isLoading; else loading"
+  [isLoading]="isLoading"
+></app-card-skeleton>
+<!--loading-->
+<!--data-->
+<ng-template #loading>
+  <div class="card-job" *ngIf="data?.length > 0; else noData">
+    <div
+      class="row custom-row"
+      *ngFor="
+        let item of data
+          | paginate
+            : {
+                itemsPerPage: itemPerPage,
+                currentPage: currentPage,
+                totalItems: totalItem
+              }
+      "
+      routerLink="/announcement/view-detail/{{ item.id }}"
+    >
+      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-9">
+        <div class="row">
+          <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-5 hr-logo">
+            <img src="{{item.company.logo === null ? 'https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image-620x600.jpg' : item.company.logo }}" alt="hrLogo" />
+          </div>
+
+          <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-7 block-hr-desc">
+            <p class="hr-name-style f-m">{{ item.position }}</p>
+            <p class="hr-desc f-m">{{ item.company.name }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-3 align">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-12">
+            <!--          <p class="job-type  f-m">{{ 'full-time' | translate }}</p>-->
+            <p class="job-type full-time f-m {{ item.type !== 'Full Time' ? 'd-none' : '' }}" >{{ 'full_time' | translate }}</p>
+            <p class="job-type part-time f-m {{ item.type !== 'Part Time' ? 'd-none' : '' }}" >{{ 'part_time' | translate }}</p>
+            <p class="job-type internship f-m {{ item.type !== 'Internship' ? 'd-none' : '' }}" >{{ 'internship' | translate }}</p>
+            <p class="job-type freelance f-m {{ item.type !== 'Freelance' ? 'd-none' : '' }}" >{{ 'freelance' | translate }}</p>
+
+          </div>
+
+          <div class="col-xl-6 col-lg-6 col-md-12">
+            <!--          <p class="hour f-m">{{item.time}}{{ 'minutes' | translate }}</p>-->
+            <p class="hour f-m">
+              {{ item.createdDate | amLocale: "km" | amTimeAgo }}
+            </p>
+            <p class="hour f-m"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<br />
+<br />
+
+<ng-template #noData>
+  <div class="col-xl-12 paging">
+    <h2>No Result</h2>
+  </div>
+</ng-template>
+<div class="col-xl-12 paging" *ngIf=" totalPage>1 && data?.length>0">
+  <pagination-controls
+    responsive="true"
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+  >
+  </pagination-controls>
+</div>

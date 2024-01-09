@@ -1,0 +1,74 @@
+<div class="container-fluid slide">
+    <div class="container">
+        <div class="row custom-row">
+            <div class="col-xl-5 col-lg-4 col-md-4 col-sm-12 col-12 first-col" style="padding: 0px 5px;">
+                <p class="text-style job-size f-m">{{ 'job_announcement' | translate }}</p>
+            </div>
+
+            <div class="col-xl-7 col-lg-8 col-md-8 col-sm-12 col-12">
+                <div class="row" >
+                    <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-12 banner-img">
+                        <img src="assets/img/home.png" alt="logo" width="50%" height="50%">
+                   j </div>
+
+                <!-- list descriptions -->
+                    <div class="col-xl-6  col-lg-6 col-md-6 col-sm-6 col-12 list-box" style="padding: 0;">
+                        <ul class="list-style f-m">
+                            <li>{{ 'envolving_your_career' | translate }}</li>
+                            <li>{{ 'employment_opportunities' | translate }}</li>
+                            <li>{{ 'easy_to_find_dream_job' | translate }}</li>
+                            <li>{{ 'build_your_future' | translate }}</li>
+                            <li>{{ 'your_dream_come_true' | translate }}</li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 block-filter">
+                        <div class="col-xl-12 label-input f-m">{{ 'Job_Position' | translate }}</div>
+                        <div class="col-xl-12">
+                          <input
+                            style="font-family: 'Roboto','Siemreap', sans-serif;"
+                            type="text"
+                            class="frm-control placeholder"
+                            name="web-developer"
+                            [(ngModel)]="searchValue"
+                            (keyup)="search()"
+                            placeholder="{{ 'Search' | translate }}"
+                          />
+                        </div>
+
+                      <div class="col-xl-12 label-input spacing f-m">
+                        {{ "Start_Date" | translate }}
+                      </div>
+                      <div class="col-xl-12">
+                        <input
+                          type="text"
+                          class="frm-control"
+                          #dp="bsDatepicker"
+                          [bsConfig]="bsConfig"
+                          bsDatepicker
+                          [(ngModel)]="startDate"
+                        />
+                      </div>
+
+                      <div class="col-xl-12 label-input spacing f-m">
+                        {{ "End_Date" | translate }}
+                      </div>
+                      <div class="col-xl-12">
+                        <input
+                          type="text"
+                          class="frm-control"
+                          #dp="bsDatepicker"
+                          bsDatepicker
+                          [bsConfig]="bsConfig"
+                          [(ngModel)]="endDate"
+                        />
+                      </div>
+                        <div class="col-xl-12">
+                            <button type="button" (click)=" filterByDate()" class="btn-search f-m spacing">{{ 'Search' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

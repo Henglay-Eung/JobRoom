@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      layout:decorate="~{layouts/index}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Article</title>
+    <link rel="stylesheet" th:href="@{/css/view-detail-announcement.css}">
+    <script type="text/javascript" src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/announcement.js" th:src="@{/js/announcement.js}"></script>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="m-0 text-dark" style="font-size: 0.5cm"><i class="fas fa-home fa-1x"></i> <i
+                            class="fas fa-chevron-right mx-2"></i>
+                        <a th:href="@{/admin/companies}" class="text-dark">Company</a> <i class="fas fa-chevron-right mx-2"></i> <a
+                                th:href="@{/admin/companies/{id}/announcements(id=${announcement.companyId})}" class="text-dark">Announcement</a>  <i class="fas fa-chevron-right mx-2"></i> <a>View-detail-announcement</a></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="container" th:each="announ,state :${announcement}">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="t-content">
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-12">
+                                    <div class="c-logo">
+                                        <img th:src="${announcement_pdf.header.logo}" alt="company logo"/>
+                                    </div>
+                                </div>
+                                <div
+                                        class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 left-detail"
+                                >
+                                    <div class="row">
+                                        <div
+                                                class="col-xl-12 col-lg-12 col-md-12 col-sm-12 c-position f-m"
+                                                th:text="${announ.position}">
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 left-side">
+                                            <div class="c-icon">
+                                                <div class="row">
+                                                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 icon">
+                                                        <span class="material-icons"> location_on </span>
+                                                    </div>
+                                                    <div
+                                                            class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10 a-location"
+                                                    >
+                                                        <span class="f-m"
+                                                              th:text="${announcement_pdf.header.location}"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="c-icon">
+                                                <div class="row">
+                                                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 icon">
+                                                        <span class="material-icons"> access_time </span>
+                                                    </div>
+                                                    <div
+                                                            class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10 date"
+                                                    >
+                      <span class="f-m" th:text="'Post date: '+${announ.createdDate}"></span
+                      >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 left-side m-t-0">
+                                            <div class="c-icon">
+                                                <div class="row">
+                                                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 icon">
+                                                        <span class="material-icons"> money </span>
+                                                    </div>
+                                                    <div
+                                                            class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10 a-location"
+                                                    >
+                                                        <span class="f-m"
+                                                              th:text="${announcement_pdf.header.salary_range==''?'~~':announcement_pdf.header.salary_range}"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="c-icon">
+                                                <div class="row">
+                                                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 icon">
+                                                        <span class="material-icons"> access_time </span>
+                                                    </div>
+                                                    <div
+                                                            class="col-xl-8 col-lg-10 col-md-10 col-sm-10 col-10 date"
+                                                    >
+                                                        <span class="f-m"
+                                                              th:text="'Post date: '+${announ.closedDate==''?'~~':announ.closedDate}"></span>
+                                                    </div>
+                                                    <div
+                                                            class="col-xl-3 col-lg-1 col-md-1 col-sm-1 col-12 col-10"
+                                                    >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div
+                                        class="col-xl-12 section"
+                                        th:classappend="${announcement_pdf.body.background==''?'d-none':''}">
+                                    <span class="f-m">BACKGROUND</span>
+                                    <div class="description f-m" th:text="${announcement_pdf.body.background}">
+                                    </div>
+                                </div>
+                                <div
+                                        class="col-xl-12 section1 "
+                                        th:classappend="${announcement_pdf.body.job_requirement==''?'d-none':'' }">
+                                    <span class="f-m">JOB REQUIREMENTS</span>
+                                    <div class="description f-m">
+                                        <ul th:each="item,state :${announcement_pdf.body.job_requirement}">
+                                            <li th:text="${item.list}">
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div
+                                        class="col-xl-12 section1"
+                                        th:classappend="${announcement_pdf.body.job_description==''?'d-none':'' }">
+                                    <span class="f-m">JOB DESCRIPTION</span>
+                                    <div class="description f-m">
+                                        <ul th:each="item,state:${announcement_pdf.body.job_description}">
+                                            <li th:text="${item.list}">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div
+                                        class="col-xl-12 section"
+                                        th:classappend="${announcement_pdf.body.how_to_apply ==''?'d-none':'' }">
+                                    <span class="f-m">HOW TO APPLY</span>
+                                    <div class="description f-m" th:text="${announcement_pdf.body.how_to_apply}">
+
+                                    </div>
+                                </div>
+                                <div
+                                        class="col-xl-12 section2 "
+                                        th:classappend="${announcement_pdf.footer.contact.address == ''|| announcement_pdf.footer.contact.website == ''? 'd-none': ''}">
+                                    <span class="f-m" style="font-weight: bold">CONTACT</span>
+                                    <div class="col-xl-12 c-row">
+                                        <div
+                                                class="row {{item.footer.contact.address == '' ? 'd-none' : ''}}">
+                                            <div class="col-xl-1 c-title">Address</div>
+                                            <div class="col-xl-11 f-m"
+                                                 th:text="${announcement_pdf.footer.contact.address }">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                            class="col-xl-12 c-row "
+                                            th:classappend="${announcement_pdf.footer.contact.website == '' ? 'd-none' : ''}">
+                                        <div class="row">
+                                            <div class="col-xl-1 c-title">Website</div>
+                                            <div class="col-xl-11 f-m"
+                                                 th:text="${announcement_pdf.footer.contact.website }">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

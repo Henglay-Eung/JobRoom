@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row content">
+    <div class="col-md-6 ">
+      <img src="/assets/SignIn_img.png" class="img-fluid" alt="image" />
+    </div>
+    <div class="col-md-6">
+      <div class="pb-2">
+        <h3 class="signin-text">Sign In</h3>
+        <span id="text-newaccount">New User? Create An Account As &nbsp;</span><span class="link-signup"
+          (click)="toSignUpEmployee()">Employee&nbsp;</span><span id="text-or">Or&nbsp;</span><span class="link-signup"
+          (click)="toSignUpHR()">HR</span>
+      </div>
+
+      <form name="form" [formGroup]="form" (ngSubmit)="form.valid && onSubmit()">
+        <div class="form-group">
+          <label for="email" id="text-email">Email</label>
+          <input placeholder="name@gmail.com" type="text" class="form-control" formControlName="email" [ngClass]="{
+              'is-invalid':
+                form.get('email').touched && form.get('email').invalid
+            }" />
+          <div *ngIf="form.get('email').touched && form.get('email').invalid">
+            <div class="error" *ngIf="form.get('email').errors.required">
+              Email Name is required
+            </div>
+            <div class="error" *ngIf="form.get('email').errors.email">
+              Email incorrect
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" id="text-password">Password</label>
+          <input type="password" class="form-control" formControlName="password" [ngClass]="{
+              'is-invalid':
+                form.get('password').touched && form.get('password').invalid
+            }" class="form-control" />
+          <div *ngIf="form.get('password').touched && form.get('password').invalid">
+            <div class="error" *ngIf="form.get('password').errors.required">
+              Password is required
+            </div>
+            <div class="error" *ngIf="form.get('password').errors.minlength">
+              Password must be a letaset min length 8
+            </div>
+            <div class="error" *ngIf="form.get('password').errors.maxlength">
+              Password must be a letaset max length 128
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Sign In" class="form-control" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

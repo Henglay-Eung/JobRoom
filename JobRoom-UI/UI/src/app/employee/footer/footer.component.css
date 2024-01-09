@@ -1,0 +1,104 @@
+.footer {
+  background-color: #00abe1;
+  padding: 40px 0px !important;
+}
+
+.m-b{
+    margin-bottom: 50px;
+}
+
+.feedback {
+  padding: 0;
+}
+.btn-send {
+  margin-top: 5px;
+  background-color: #fff;
+  border: none;
+  color: #757373 !important;
+  padding: 6px 25px;
+  border-radius: 3px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+.f-m {
+  font-family: 'Roboto','Siemreap', sans-serif;
+  color: white;
+}
+.w-s {
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  line-height: 157%;
+  font-size: 16px;
+}
+.w-s-header {
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  line-height: 21px;
+  font-size: 18px;
+}
+.custome-row {
+  padding: 50px;
+}
+
+.copyright {
+  background-color: #00a2d5;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.copyright-text {
+  text-align: center;
+  padding-top: 12px;
+}
+
+.text-color{
+    color: #000;
+}
+
+
+@media (min-width: 1200px) {
+}
+
+/*Large devices (desktops, 992px and up)*/
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .margin {
+    margin-top: 5% !important;
+  }
+  .w-s-header {
+    font-size: 15px;
+  }
+  .w-s {
+    font-size: 14px;
+  }
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+
+@media (max-width: 575.98px) {
+  .margin {
+    margin-top: 4% !important;
+  }
+  .w-s-header {
+    font-size: 14px;
+  }
+  .w-s {
+    font-size: 13px;
+  }
+}

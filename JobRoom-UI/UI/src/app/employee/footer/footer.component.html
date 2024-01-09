@@ -1,0 +1,42 @@
+<simple-notifications></simple-notifications>
+<div class="container-fluid footer">
+  <div class="container m-b">
+    <div class="row">
+      <!-- about us -->
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 margin">
+        <h5 class="about-us f-m w-s-header">{{ 'About_us' | translate }}</h5>
+        <p class="f-m w-s"> {{ 'under_about_us' | translate }}</p>
+      </div>
+
+      <!-- contact info -->
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 margin">
+        <h5 class="about-us f-m w-s-header">{{ 'contact_info' | translate }}</h5>
+        <p class="f-m w-s">
+          {{ 'address' | translate }} <br />
+          {{ 'phone_number' | translate }} <br />
+          {{ 'email' | translate }}
+        </p>
+      </div>
+
+      <!-- feedback -->
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 margin">
+        <h5 class="about-us f-m w-s-header">{{ 'feed_back' | translate }}</h5>
+        <div class="form-group feedback">
+          <form [formGroup]="feedBackForm">
+            <textarea formControlName="content" placeholder="{{ 'feed_back_intext' | translate }}" class="form-control f-m w-s text-color" rows="4"></textarea>
+          </form>
+        </div>
+        <button (click)="onFeedback()" class="btn-send f-m w-s">{{ 'send' | translate }}</button>
+      </div>
+    </div>
+
+    <!-- copyright -->
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 copyright">
+      <p class="f-m w-s copyright-text">{{ 'copyright' | translate }}</p>
+    </div>
+  </div>
+</div>
+<ngx-loading
+  [show]="myLoading"
+  [template]="customLoadingTemplate"
+></ngx-loading>

@@ -1,0 +1,112 @@
+
+.box-job-list{
+    overflow: hidden;
+}
+
+.block-filter{
+    padding-top: 8%;
+}
+.title{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 33px;
+    letter-spacing: 0.09em;
+    color: #000000;
+    margin-top: 5% !important;
+}
+
+.align{
+    margin: auto;
+    text-align: center;
+}
+.f-m{
+    font-family: 'Roboto','Siemreap', sans-serif;
+}
+.job-list{
+    margin-top: 20px;
+}
+.label-input{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+.frm-control{
+    font-family: 'Roboto','Siemreap', sans-serif;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    margin-top: 10px;
+    border-radius: 3px;
+    width: 100%;
+    border: none;
+    padding: 13px 15px;
+    border: 1px solid #ebebeb;
+    color: #000000 !important;
+}
+.placeholder{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+    color: #ABA9A9;
+}
+.spacing{
+    margin-top: 25px;
+}
+.btn-search{
+    background-color: #00ABE1 !important;
+    color: white;
+    font-size: 14px;
+    border-radius: 3px;
+    width: 100%;
+    border: none;
+    padding: 8px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+@media (min-width: 1200px) {
+}
+
+/*Large devices (desktops, 992px and up)*/
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+    .title{
+        font-size: 22px;
+    }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .title{
+        font-size: 20px;
+    }
+    .block-filter{
+        display: none;
+    }
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+
+@media (max-width: 575.98px) {
+    .title{
+        font-size: 20px;
+    }
+    .block-filter{
+        display: none;
+    }
+}

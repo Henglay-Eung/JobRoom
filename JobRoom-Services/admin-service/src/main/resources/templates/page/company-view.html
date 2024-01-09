@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      layout:decorate="~{layouts/index}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Article</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Company Details</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card card-white">
+                <div class="card-header">
+                    <img style="max-height: 100px" src="https://www.pi-pe.co.jp/wp-content/themes/piped/asset/images/logo_sns_pipedbits.png" />
+                </div>
+                <div class="card-body ml-3">
+                    <p th:text="'Name : ' +${company.name}"></p>
+                    <p th:text="'Primay Email : ' +${company.primaryEmail}"></p>
+                    <p th:text="'Contact Email : ' +${company.secondaryEmail}"></p>
+                    <p th:text="'Website : ' +${company.website}"></p>
+                    <p th:text="'Street : ' +${company.street}"></p>
+                    <p th:text="'Commune : ' +${company.commune}"></p>
+                    <p th:text="'District : ' +${company.district}"></p>
+                    <p th:text="'City : ' +${company.city}"></p>
+                    <p th:text="'Telephone : ' +${company.telephone}"></p>
+
+
+                </div>
+                <div class="card-footer">
+<!--                    <span >AA</span>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

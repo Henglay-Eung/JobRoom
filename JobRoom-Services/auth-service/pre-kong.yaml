@@ -1,0 +1,18 @@
+_format_version: "1.1"
+_info:
+  select_tags:
+    - manage-by-deck
+    - pre-auth
+services:
+- name: pre-auth-service
+  url: http://35.197.132.204:31002
+  routes:
+  - name: pre-auth-route
+    hosts:
+    - 35.187.232.200
+    paths:
+    - /pre/auth
+    strip_path: true
+plugins:
+- name: syslog
+  service: pre-auth-service

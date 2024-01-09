@@ -1,0 +1,102 @@
+.content {
+  padding-top: 3% !important;
+}
+
+.link-signup {
+  font-size: 14px;
+  font-weight: bold;
+  color: #00abe1;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.form-group span {
+  font-size: 18px;
+  color: #919191;
+  right: 33%;
+  margin-top: 5.5%;
+  position: absolute;
+}
+
+.icon {
+  padding: 10px;
+  min-width: 40px;
+}
+
+.flat {
+  margin-top: 8%;
+}
+
+#text-or {
+  font-family: Helvetica;
+  font-size: 14px;
+  color: #000000;
+  opacity: 0.5;
+}
+#text-newaccount {
+  font-family: Helvetica;
+  font-size: 14px;
+  color: #000000;
+  opacity: 0.5;
+}
+
+.signin-text {
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 32px;
+  color: #000000;
+}
+input[type="text"] {
+  background: #ffffff;
+  opacity: 0.5;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+input[type="password"] {
+  background: #ffffff;
+  opacity: 0.5;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+input[type="submit"] {
+  color: white;
+  background: #00abe1;
+  border-radius: 8px;
+}
+input[type="submit"] {
+  color: white;
+  background: #00abe1;
+  border-radius: 8px;
+}
+input.invalid {
+  border-radius: 1px solid #00abe1;
+}
+input.ng-valid {
+  border: 2px solid #00abe1;
+}
+.error {
+  color: red;
+}
+
+@media only screen and (min-width: 769px) {
+  /* hi-res laptops and desktops */
+  .signin-text {
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 32px;
+    margin-top: 80px;
+  }
+  img {
+    margin-top: 60px;
+    width: 80%;
+    height: auto;
+  }
+  form {
+    margin-right: 160px;
+  }
+
+  .content {
+    padding-top: 3% !important;
+  }
+}

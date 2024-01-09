@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://35.240.132.240:1804/schedule_service
+    username: spring
+    password: spring!@#
+#    url: jdbc:postgresql://localhost:5432/postgres
+#    username: postgres
+#    password: rofak@123
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8080
+

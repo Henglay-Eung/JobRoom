@@ -1,0 +1,62 @@
+{
+    "signup_to_jobroom":"Sign Up to JobRoom",
+    "already_member":"Already member",
+    "company_name":"Company",
+    "company_name_is_required":"Company is required",
+    "company_name_must_input_text":"Company Name must input text",
+    "company_name_must_maxlength_50_character":"Compnay name must maxlength 50 character",
+
+    "company_name_must_minlength_4_character":" Company Name must minlength 4 character",
+
+    "email_is_required":"Email is required",
+
+    "email_input_is_incorrect":"Email input is incorrect",
+
+    "password":"Password",
+
+    "login":"Login",
+
+    "username":"Username",
+
+    "username_is_required":"Username is required",
+
+    "password_is_required":"Password is required",
+
+    "password_must_maxlength_20_character":"Password must maxlength 20 character",
+
+    "secodary_email":"Secondary email",
+
+    "secodary_email_is_required":"Secondary email is required",
+
+    "password_at_least_8chracter":"Password at least 8 character",
+
+    "password_can_be_make_120_character_long":"Password can be make 120 character long",
+
+
+    "create_an_account":"create an account",
+
+    "secodary_email_input_is_incorrect":"secondary email input is incorrect",
+
+    "phone_number":"Phone Number",
+
+    "phone_number_is_required":"Phone number is required",
+
+    "phone_number_maxlength_10_character":"Phone number maxlength 10 character",
+
+    "street":"Street",
+
+    "street_is_required":"Street is required",
+
+    "commune":"Commune",
+
+    "commune_is_required":"Comune is required",
+
+    "district":"District",
+
+    "district_is_required":"District is required",
+
+    "city_is_required":"City is required"
+
+
+}
+    

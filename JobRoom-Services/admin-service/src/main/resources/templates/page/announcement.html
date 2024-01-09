@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      layout:decorate="~{layouts/index}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Announcement</title>
+    <link rel="stylesheet" th:href="@{/css/company.css}">
+    <script type="text/javascript" src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/announcement.js" th:src="@{/js/announcement.js}"></script>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="m-0 text-dark" style="font-size: 0.5cm"><i class="fas fa-home fa-1x"></i> <i class="fas fa-chevron-right mx-2"></i>
+                        <a th:href="@{/admin/companies}" class="text-dark">Company</a>  <i class="fas fa-chevron-right mx-2"></i> <a>Announcement</a></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-3 d-flex align-items-end">
+                                    <div class="form-group mr-1">
+                                        <label>Start Date</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date" class="form-control" id="start-date">
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-end">
+                                    <div class="form-group mr-1">
+                                        <label>Start Date</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date" class="form-control" id="close-date">
+                                    </div>
+                                </div>
+                                <div class="col-1 d-flex align-items-end ">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary" id="submit-date" th:onclick="'submitDate(\'' + ${id}+'\');'">Submit</button>
+                                    </div>
+                                </div>
+                                <div class="col-2 d-flex align-items-end">
+                                    <div class="form-group">
+                                        <select class="custom-select" id="type-announcement" th:onchange="'chooseAnnoun(\'' + ${id}+'\');'">
+                                            <option selected value="">Choose Type Announcement</option>
+                                            <option value="open">Open Announcement</option>
+                                            <option value="closed">Close Announcement</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-2 d-flex align-items-end justify-content-around">
+                                    <div class="form-group">
+                                        <input class="form-control" id="at-input-search" placeholder="Search By Position">
+                                    </div>
+                                </div>
+                                <div class="col-1 d-flex align-items-end ">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary" type="submit" id="btnSearch" th:onclick="'search(\'' + ${id}+'\');'">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Position</th>
+                                    <th>Caption</th>
+                                    <th>Created Date</th>
+                                    <th>Close Date</th>
+                                    <th>Thumbnail</th>
+                                    <th>Draft</th>
+                                    <th>Banned</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="announcement,state :${announcements}"
+                                    th:class="${announcement.banned?'ban':''}">
+                                    <td th:text="${announcement.id}"></td>
+                                    <td th:text="${announcement.position}"></td>
+                                    <td th:text="${announcement.caption}"></td>
+                                    <td th:text="${announcement.createdDate}"></td>
+                                    <td th:text="${announcement.closedDate}"></td>
+                                    <td>
+                                        <img th:src="${announcement.thumbnail}" alt="" class="img-thumbnail" width="100px">
+                                    </td>
+                                    <td th:text="${announcement.draft}"></td>
+                                    <td th:text="${announcement.banned}"></td>
+
+                                    <td>
+                                        <div class="d-flex justify-content-around">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input"
+                                                       th:id="${'toggleAnnountcement'+announcement.id}"
+                                                       th:checked="${announcement.banned?false:true}">
+                                                <label class="custom-control-label pointer"
+                                                       data-switch-toggle="state"
+                                                       th:onclick="'disable(\'toggleAnnountcement' + ${announcement.id}+'\',\''+ ${announcement.id} + '\');'"
+                                                       th:for="${'toggleAnnountcement'+announcement.id}">
+
+                                                </label>
+
+
+                                            </div>
+                                            <a th:href="@{/admin/companies/announcement/{id}(id=${announcement.id})}">
+                                                                    <span class="pointer" data-target="#modal-lg"
+                                                                          data-toggle="modal">
+                                                <i class="fas fa-eye fa-lg"></i></span>
+                                            </a>
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+<!--                            pagination for all-->
+                            <div th:if="${all}">
+                            <nav aria-label="Page navigation example" th:if="${pagination.totalPages gt 1}">
+                                <ul class="pagination justify-content-end">
+                                    <li class="page-item" th:classappend="${pagination.currentPage eq 0} ? 'disabled'">
+                                        <a class="page-link"
+                                           th:href="@{/admin/companies/{id}/announcements(id=${id},page=${pagination.currentPage lt 1 ? 0 :pagination.currentPage - 1},position=${position},startDate=${start},endDate=${end})}"
+                                           tabindex="-1">Previous</a>
+                                    </li>
+                                    <li class="page-item"
+                                        th:classappend="${i eq pagination.currentPage + 1} ? 'active'"
+                                        th:each="i : ${#numbers.sequence( 1, pagination.totalPages, 1)}">
+                                        <a class="page-link"
+                                           th:href="@{/admin/companies/{id}/announcements(id=${id},page=${i - 1},position=${position},startDate=${start},endDate=${end})}"
+                                           th:text="${i}">1</a>
+                                    </li>
+                                    <li class="page-item"
+                                        th:classappend="${pagination.currentPage + 1 eq pagination.totalPages} ? 'disabled'">
+                                        <a class="page-link"
+                                           th:href="@{'/admin/companies/'+${id}+'/announcements?page=' + ${pagination.currentPage + 1}+'&position='+${position}+'&startDate='+${start}+'&endDate='${end}}"
+                                        >Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            </div>
+              <!--                            pagination for all-->
+
+<!--                            pageination for open announcement-->
+                            <div th:if="${isOpen}">
+                                <nav aria-label="Page navigation example" th:if="${pagination.totalPages gt 1}">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item" th:classappend="${pagination.currentPage eq 0} ? 'disabled'">
+                                            <a class="page-link"
+                                               th:href="@{/admin/companies/{id}/announcements(id=${id},page=${pagination.currentPage lt 1 ? 0 :pagination.currentPage - 1},open=${open})}"
+                                               tabindex="-1">Previous</a>
+                                        </li>
+                                        <li class="page-item"
+                                            th:classappend="${i eq pagination.currentPage + 1} ? 'active'"
+                                            th:each="i : ${#numbers.sequence( 1, pagination.totalPages, 1)}">
+                                            <a class="page-link"
+                                               th:href="@{/admin/companies/{id}/announcements(id=${id},page=${i - 1},open=${open})}"
+                                               th:text="${i}">1</a>
+                                        </li>
+                                        <li class="page-item"
+                                            th:classappend="${pagination.currentPage + 1 eq pagination.totalPages} ? 'disabled'">
+                                            <a class="page-link"
+                                               th:href="@{'/admin/companies/'+${id}+'/announcements?page=' + ${pagination.currentPage + 1}+'&open='+${open}}"
+                                            >Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+
+                            <!--                            pageination for open announcement-->
+<!--                            pagination for close announcement-->
+                            <div th:if="${isClosed}">
+                                <nav aria-label="Page navigation example" th:if="${pagination.totalPages gt 1}">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item" th:classappend="${pagination.currentPage eq 0} ? 'disabled'">
+                                            <a class="page-link"
+                                               th:href="@{/admin/companies/{id}/announcements(id=${id},page=${pagination.currentPage lt 1 ? 0 :pagination.currentPage - 1},close=${closed})}"
+                                               tabindex="-1">Previous</a>
+                                        </li>
+                                        <li class="page-item"
+                                            th:classappend="${i eq pagination.currentPage + 1} ? 'active'"
+                                            th:each="i : ${#numbers.sequence( 1, pagination.totalPages, 1)}">
+                                            <a class="page-link"
+                                               th:href="@{/admin/companies/{id}/announcements(id=${id},page=${i - 1},close=${closed})}"
+                                               th:text="${i}">1</a>
+                                        </li>
+                                        <li class="page-item"
+                                            th:classappend="${pagination.currentPage + 1 eq pagination.totalPages} ? 'disabled'">
+                                            <a class="page-link"
+                                               th:href="@{'/admin/companies/'+${id}+'/announcements?page=' + ${pagination.currentPage + 1}+'&close='+${closed}}"
+                                            >Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!--                            pagination for close announcement-->
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Info boxes -->
+
+    <!--                                                modal delete-->
+    <div aria-modal="true" class="modal fade show" id="delete-modal" role="dialog" style="display: none;">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title modal-warning-title">Warning</h4>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button"
+                            th:onclick="'cancel();'">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4 style="text-align: center" id="modal-text">Do you want to delete this employee?</h4>
+                </div>
+                <div class="delete-buttons-wrapper">
+                    <a class="btn btn-danger text-white" id="btn-disable-enable">
+                        Delete
+                    </a>
+                    <a class="btn btn-primary text-white" th:onclick="'cancel();'">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!--                                                modal delete-->
+
+</div>
+</body>
+</html>

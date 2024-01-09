@@ -1,0 +1,141 @@
+
+<div class="bread" *ngFor="let item of announcement">
+  <span>{{ 'job_announcement' | translate }} / {{ 'view_details' | translate }}</span>
+</div>
+<div class="t-content" *ngFor="let announ of announcement">
+  <div class="row" *ngFor="let item of announcement_pdf">
+    <div class="col-xl-12">
+      <div class="t-content">
+        <div class="row">
+          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-12">
+            <div class="c-logo">
+              <img src="{{item.header.logo === null ? 'https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image-620x600.jpg' : item.header.logo }}" alt="company logo" />
+            </div>
+          </div>
+          <div
+            class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 left-detail"
+          >
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 c-position f-m">
+                {{announ.position}}
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 left-side">
+                <div class="c-icon">
+                  <div class="row">
+                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 icon">
+                      <span class="material-icons"> location_on </span>
+                    </div>
+                    <div
+                      class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10 a-location"
+                    >
+                      <span class="f-m">{{item.header.location}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="c-icon">
+                  <div class="row">
+                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 icon">
+                      <span class="material-icons"> access_time </span>
+                    </div>
+                    <div
+                      class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10 date"
+                    >
+                      <span class="f-m">Post Date: {{announ.createdDate | date:'yyyy-MM-dd'}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 left-side m-t-0">
+                <div class="c-icon">
+                  <div class="row">
+                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 icon">
+                      <span class="material-icons"> money </span>
+                    </div>
+                    <div
+                      class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10 a-location" 
+                    >
+                      <span class="f-m">{{item.header.salary_range === "" ? "~~" : item.header.salary_range}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="c-icon">
+                  <div class="row">
+                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 icon">
+                      <span class="material-icons"> access_time </span>
+                    </div>
+                    <div
+                      class="col-xl-8 col-lg-10 col-md-10 col-sm-10 col-10 date"
+                    >
+                      <span class="f-m">Close Date: {{announ.closedDate}}</span>
+                    </div>
+                    <div
+                      class="col-xl-3 col-lg-1 col-md-1 col-sm-1 col-12 col-10"
+                    >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-xl-12 section {{ item.body.background == '' ? 'd-none' : '' }}">
+            <span class="f-m">BACKGROUND</span>
+            <div class="description f-m">
+              {{item.body.background}}
+            </div>
+          </div>
+          <div class="col-xl-12 section1 {{ item.body.job_requirement == '' ? 'd-none' : '' }}">
+            <span class="f-m">JOB REQUIREMENTS</span>
+            <div class="description f-m">
+              <ul>
+                <li *ngFor="let list of item.body.job_requirement">
+                  {{list.list}}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-12 section1 {{ item.body.job_description == '' ? 'd-none' : '' }}">
+            <span class="f-m">JOB DESCRIPTION</span>
+            <div class="description f-m">
+              <ul>
+                <li *ngFor="let list of item.body.job_description">{{list.list}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-12 section {{ item.body.how_to_apply == '' ? 'd-none' : '' }}">
+            <span class="f-m">HOW TO APPLY</span>
+            <div class="description f-m">
+              {{item.body.how_to_apply}}
+            </div>
+          </div>
+          <div class="col-xl-12 section2 {{ item.footer.contact.address == '' || item.footer.contact.website == '' ? 'd-none' : '' }}">
+            <span class="f-m" style="font-weight: bold;">CONTACT</span>
+            <div class="col-xl-12 c-row">
+              <div class="row {{ item.footer.contact.address == '' ? 'd-none' : '' }}">
+                <div class="col-xl-1 c-title ">Address</div>
+                <div class="col-xl-11 f-m">
+                  : {{item.footer.contact.address}}
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-12 c-row {{ item.footer.contact.website == '' ? 'd-none' : '' }}">
+              <div class="row">
+                <div class="col-xl-1 c-title">Website</div>
+                <div class="col-xl-11 f-m">: {{item.footer.contact.website}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-12 pdf">
+          <button class="btn-pdf f-m" (click)="convetToPDF()"> {{ 'download_pdf' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-loading
+  [show]="myLoading"
+  [template]="customLoadingTemplate"
+></ngx-loading>

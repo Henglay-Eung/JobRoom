@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      layout:decorate="~{layouts/index}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>View Announcement</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Article Details</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card card-white">
+                <div class="card-header">
+                    <img style="max-height: 100px" src="https://www.pi-pe.co.jp/wp-content/themes/piped/asset/images/logo_sns_pipedbits.png" />
+                </div>
+                <div class="card-body ml-3">
+                    <p th:text="'UUID : ' +${announcement.uuid}"></p>
+
+
+
+                </div>
+                <div class="card-footer">
+                    <!--                    <span >AA</span>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

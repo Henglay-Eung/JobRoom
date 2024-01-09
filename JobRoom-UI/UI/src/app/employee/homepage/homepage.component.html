@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+<app-slide></app-slide>
+
+<div class="container" style="margin-bottom: 50px">
+  <div class="row">
+    <div class="col-xl-9 col-lg-9 col-md-9 box-job-list">
+      <div class="col-xl-12 title f-m align">
+        {{ "Announcement_List" | translate }}
+      </div>
+      <div class="col-xl-12 job-list">
+        <app-each-announcement [isSearch]="isSearch" [data]="data" [isLoading]="isLoading" [itemPerPage]="itemPerPage"
+                               [totalItem]="totalItem" [currentPage]="currentPage" [isFilterByDate]="isFilterByDate" [totalPage]="totalPage"></app-each-announcement>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-3 col-md-3 block-filter">
+      <div class="col-xl-12 label-input f-m">
+        {{ "Job_Position" | translate }}
+      </div>
+      <div class="col-xl-12">
+        <input
+          type="text"
+          class="frm-control placeholder"
+          name="web-developer"
+          [(ngModel)]="searchValue"
+          (keyup)="search()"
+          placeholder="{{ 'Search' | translate }}"
+        />
+      </div>
+
+      <div class="col-xl-12 label-input spacing f-m">
+        {{ "Start_Date" | translate }}
+      </div>
+      <div class="col-xl-12">
+        <input
+          type="text"
+          class="frm-control"
+          #dp="bsDatepicker"
+          [bsConfig]="bsConfig"
+          bsDatepicker
+          [(ngModel)]="startDate"
+        />
+      </div>
+
+      <div class="col-xl-12 label-input spacing f-m">
+        {{ "End_Date" | translate }}
+      </div>
+      <div class="col-xl-12">
+        <input
+          type="text"
+          class="frm-control"
+          #dp="bsDatepicker"
+          bsDatepicker
+          [bsConfig]="bsConfig"
+          [(ngModel)]="endDate"
+        />
+      </div>
+      <div class="col-xl-12">
+        <button type="button" class="btn-search f-m spacing" (click)="filterByDate()">
+          {{ "Search" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

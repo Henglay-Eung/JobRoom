@@ -1,0 +1,18 @@
+_format_version: "1.1"
+_info:
+  select_tags:
+    - manage-by-deck
+    - auth-service
+services:
+- name: auth-service
+  url: http://35.197.132.204:30002/
+  routes:
+  - name: auth-route
+    hosts:
+    - 35.187.232.200
+    paths:
+    - /auth
+    strip_path: true
+plugins:
+- name: syslog
+  service: auth-service

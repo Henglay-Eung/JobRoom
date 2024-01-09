@@ -1,0 +1,19 @@
+_format_version: "1.1"
+_info:
+  select_tags:
+    - manage-by-deck
+    - pre-chat
+services:
+- name: pre-chat-service
+  id: pre-chat
+  url: http://35.197.132.204:31003
+  routes:
+  - name: pre-chat-route
+    hosts:
+    - 35.187.232.200
+    paths:
+    - /pre/chat
+    strip_path: true
+plugins:
+- name: syslog
+  service: pre-chat-service

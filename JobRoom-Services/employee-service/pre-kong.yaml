@@ -1,0 +1,18 @@
+_format_version: "1.1"
+_info:
+  select_tags:
+    - manage-by-deck
+    - pre-employee
+services:
+- name: pre-employee-service
+  url: http://35.197.132.204:31004
+  routes:
+  - name: pre-employee-route
+    hosts:
+    - 34.87.36.136
+    paths:
+    - /pre/employee
+    strip_path: true
+plugins:
+- name: syslog
+  service: pre-employee-service

@@ -1,0 +1,73 @@
+<div class="content-navbar">
+  <div class="container">
+    <div class="row navbar">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 jm-logo" routerLink="/">
+        <img src="assets/img/logo.png" alt="logo" width="141px" height="38px" />
+      </div>
+
+      <div
+        class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-end"
+      >
+        <mat-form-field class="no-line" style="width: 95px; height: 0;">
+          <mat-select [value]="language.value" (valueChange)="changeLocale($event)">
+            <mat-select-trigger>
+              <div fxLayout="row" fxLayoutAlign="start center" class="m-l-10" fxLayoutGap="10px">
+                <img [src]="language.img" class="flag"/>
+                <span class="f-m">{{ language.label }}</span>
+              </div>
+            </mat-select-trigger>
+            <mat-option *ngFor="let opt of languages" [value]="opt.value">
+              <div fxLayout="row" fxLayoutAlign="start center" class="m-l-10"  fxLayoutGap="10px">
+                <img [src]="opt.img" class="flag" />
+                <span class="f-m">{{opt.label}}</span>
+              </div>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="btn-group" (click)="toggleDialog()">
+          <img
+            class="rounded-circle z-depth-2"
+            width="40px"
+            height="40px"
+            alt="100x100"
+            [src]="employee.profilePicture"
+          />
+        </div>
+        <div *ngIf="isHideDialog">
+          <ul class="dropdown-menu">
+            <li role="menuitem">
+              <a class="dropdown-item"
+                ><img
+                  class="rounded-circle z-depth-2"
+                  width="40px"
+                  height="40px"
+                  alt="100x100"
+                  [src]="employee.profilePicture"
+              /></a>
+            </li>
+            <li>
+              <a class="dropdown-item profile-name f-m" >{{employee.fullName}}</a>
+            </li>
+            <li>
+              <a class="dropdown-item email f-m" href="#"
+                >{{employee.email}}</a
+              >
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <ul class="hr-dropdown">
+              <li>
+                <a href="https://connex.kshrd-ite.com/user-profile/{{employee.uuid}}/about-user-profile" target="_blank"
+                  ><span class="material-icons"> settings </span>{{ 'manage_your_accounts' | translate }}</a
+                >
+              </li>
+              <li>
+                <a href="https://account.kshrd-ite.com/" (click)="logout()" ><span class="material-icons"> login </span>{{ 'logout' | translate }}</a>
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

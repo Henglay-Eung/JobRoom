@@ -1,0 +1,221 @@
+<simple-notifications></simple-notifications>
+<div class="bread">
+  <span>{{ 'job_announcement' | translate }} / {{ 'save_draft' | translate }}</span>
+</div>
+<div class="t-content">
+  <div class="row">
+    <div class="col-xl-12 t-header">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="row">
+            <div class="col-xl-12 t-title">
+              <span>{{ 'save_draft_management' | translate }}</span>
+            </div>
+            <div class="col-xl-2">
+              <div class="form-group row">
+                <div class="col-sm">
+                  <label for="startdate" class="col-sm-3 col-form-label pl-0"
+                  >{{ 'Start_Date' | translate }}:</label
+                  >
+                  <input
+                    type="text"
+                    id="startdate"
+                    class="form-control"
+                    #dp="bsDatepicker"
+                    [(ngModel)]="startDate"
+                    [bsConfig]="bsConfig"
+                    bsDatepicker
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 pr-xl-0">
+              <div class="form-group row">
+                <div class="col-sm">
+                  <label for="enddate" class="col-sm-3 col-form-label pl-0"
+                  >{{ 'End_Date' | translate }}:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    #dp="bsDatepicker"
+                    [(ngModel)]="endDate"
+                    id="enddate"
+                    [bsConfig]="bsConfig"
+                    bsDatepicker
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-1 pl-xl-0 d-flex align-items-end">
+              <div class="form-group row">
+                <div class="col-sm">
+                  <button class="btn btn-color" (click)="changeDate()">{{'submit' | translate}}</button>
+                </div>
+              </div>
+            </div>
+
+            <!--            Search-->
+            <div class="col-xl-2 pr-xl-0">
+              <div class="form-group row">
+                <div class="col-sm">
+                  <label
+                    for="search"
+                    class="col-sm-3 col-form-label pl-0"
+                  >{{ 'Search' | translate }}</label
+                  >
+                  <input
+                    id="search"
+                    type="text"
+                    class="form-control"
+                    name="snpid"
+                    [(ngModel)]="searchSaveDraft"
+                    placeholder="{{ 'Search' | translate }}"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-1 pl-xl-0 d-flex align-items-end">
+              <div class="form-group row">
+                <div class="col-sm">
+                  <button class="btn btn-color" (click)="search()">{{ 'Search' | translate }}</button>
+                </div>
+              </div>
+            </div>
+
+            <!--            Filter-->
+            <div class="col-xl-4">
+              <div class="form-group row">
+                <div class="col-sm">
+                  <label
+                    for="lunch"
+                    class="col-sm-3 col-form-label pl-0"
+                  >{{'Filter'| translate}}</label
+                  >
+                  <select
+                    id="lunch"
+                    class="selectpicker form-control"
+                    data-live-search="true"
+                    (change)="selectPosition($event)"
+                    title="Please select a lunch ..."
+                  >
+                    <option value="">{{ 'choose' | translate }}</option>
+                    <option *ngFor="let position of listPosition" value="{{position}}">{{position}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-12 t-body">
+      <div class="item" *ngIf="isLoading;else loading">
+        <ngx-skeleton-loader count="10"
+                             [theme]="{'border':'none','animation':'none','height':'40px'}"></ngx-skeleton-loader>
+      </div>
+      <ng-template #loading>
+        <table>
+          <thead>
+          <tr class="t-header">
+            <th class="w-15">{{ 'no' | translate }}</th>
+            <th class="w-25">{{ 'title' | translate }}</th>
+            <th class="w-25">{{ 'position' | translate }}</th>
+            <th class="w-15">{{ 'create_date' | translate }}</th>
+            <th class="w-15">{{ 'close_date' | translate }}</th>
+            <th>{{ 'candidate' | translate }}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr
+            class="t-bg"
+            *ngFor="
+              let item of data | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage,totalItems:totalItem }
+            "
+          >
+            <td class="w-10">{{ item.id }}</td>
+            <td>{{ item.caption }}</td>
+            <td>{{ item.position }}</td>
+            <td>{{ item.createdDate | date:"yyyy-MM-dd"}}</td>
+            <td>
+              <div class="btn-action">
+                <ul>
+                  <li>
+                    <span
+                      class="material-icons"
+                      routerLink="../job-announcement/view/{{ item.id }}"
+                    >
+                      remove_red_eye
+                    </span>
+                  </li>
+                  <li>
+                    <span class="material-icons" [routerLink]="['../job-announcement/create']" [queryParams]="{ isUpdate: true, id: item.id }"> edit </span>
+                  </li>
+                  <li>
+                    <span class="material-icons" (click)="openModal(template)">
+                      delete
+                    </span>
+                    <ng-template #template>
+                      <div class="modal-header">
+                        <h4 class="modal-title pull-left f-m">
+                          {{ "Save_draft_announcement_deletion" | translate }}
+                        </h4>
+                        <button
+                          type="button"
+                          class="close pull-right"
+                          aria-label="Close"
+                          (click)="modalRef.hide()"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <h4 class="f-m text-black​​">
+                          {{ "Are_you_sure_want_to_delete" | translate }}
+                        </h4>
+                        <h5 class="f-m">
+                          {{ "all_information_associated" | translate }}
+                        </h5>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="my-btn my-close f-m"
+                          (click)="modalRef.hide()"
+                        >
+                          {{ "not_ok" | translate }}
+                        </button>
+                        <button
+                          type="button"
+                          class="my-btn ok f-m"
+                          (click)="onDeleteAnnouncement(item.id)"
+                          (click)="modalRef.hide()"
+                        >
+                          {{ "ok" | translate }}
+                        </button>
+                      </div>
+                    </ng-template>
+                  </li>
+                </ul>
+              </div>
+              {{ item.closedDate }}
+            </td>
+            <td>
+              {{ item.candidateCount }}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </ng-template>
+    </div>
+    <div class="col-xl-12 t-footer" *ngIf="totalPage>1 && data?.length>0">
+      <pagination-controls
+        responsive="true"
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTableDataChange($event)">
+      </pagination-controls>
+    </div>
+  </div>
+</div>

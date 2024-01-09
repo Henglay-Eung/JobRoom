@@ -1,0 +1,188 @@
+<div class="bread">
+    <span>{{ 'setting' | translate }}</span>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card card-profile">
+            <div class="card-header jr-header">
+                <div class="profile-picture jr-profile">
+                    <div class=" w-100" style="margin-top: 10px;">
+                        <img [src]="url" alt="..." style="object-fit: cover;" width="200px" />
+                    </div>
+                </div>
+            </div>
+            <div class="card-body pt-0">
+                <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item">
+                        <div class="icon-preview"><i class="fas fa-user"></i></div>
+                        <span class="font-weight-bold mr-3 f-m">{{ 'name' | translate }}:</span> <span class="text-break-profile">{{data?.name}}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="icon-preview"><i class="fas fa-envelope"></i></div>
+                        <span class="font-weight-bold mr-3 f-m">{{ 'PrimaryEmail' | translate }}:</span> <span class="text-break-profile">{{data?.primaryEmail}}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="icon-preview"><i class="fas fa-envelope"></i></div>
+                        <span class="font-weight-bold mr-3 f-m">{{ 'SecondEmail' | translate }}:</span> <span class="text-break-profile">{{data?.secondaryEmail}}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="icon-preview"><i class="fas fa-globe-americas"></i></div>
+                        <span class="font-weight-bold mr-3 f-m">{{ 'Website' | translate }}:</span><span class="text-break-profile"> {{data?.website}}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="icon-preview"><i class="fas fa-map-marked-alt"></i></div>
+                        <span class="font-weight-bold mr-3 f-m">{{ 'Address' | translate }}:</span> <span class="text-break-profile">{{data?.street}}
+            , {{data?.commune}}, {{data?.district}}, {{data?.city}}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="icon-preview"><i class="fas fa-address-book"></i></div>
+                        <span class="font-weight-bold mr-3 f-m">{{ 'Telephone' | translate }}:</span> <span class="text-break-profile">{{data?.telephone}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card card-with-nav">
+            <div class="card-header">
+                <div class="row row-nav-line">
+                    <ul class="nav nav-tabs nav-line nav-color-secondary w-100 pl-3" role="tablist">
+                        <li class="nav-item" (click)="isProfileTrue()"><a class="nav-link f-m active show" data-toggle="tab" href="#settings" role="tab" aria-selected="false">{{ 'Profile_Setting' | translate }}</a></li>
+                        <li class="nav-item" (click)="isProfileFalse()"><a class="nav-link f-m show" data-toggle="tab" href="#settings" role="tab" aria-selected="false">{{ 'Change_Password' | translate }}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body" *ngIf="isProfile; else changePass">
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="f-m" for="name">{{ 'name' | translate }}<i class="fas fa-asterisk required-field fa-xs"></i></label>
+                                <input type="text" [(ngModel)]="empName" name="name" class="form-control f-m" id="name" placeholder="Name" required #empNameModel="ngModel">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="f-m" for="primaryEmail">{{ 'PrimaryEmail' | translate }}<i class="fas fa-asterisk required-field fa-xs"></i></label>
+                                <input type="email" [(ngModel)]="primaryEmail" name="primary_email" class="form-control f-m" id="primaryEmail" disabled="true" placeholder="{{ 'PrimaryEmail' | translate }}">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="f-m" for="secondaryEmail">{{ 'SecondEmail' | translate }}</label>
+                                <input type="email" [(ngModel)]="secondaryEmail" name="secondary_email" class="form-control f-m" id="secondaryEmail" placeholder="{{ 'SecondEmail' | translate }}">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="f-m" for="website">{{ 'Website' | translate }}</label>
+                                <input type="text" [(ngModel)]="website" class="form-control f-m" name="website" id="website" placeholder="{{ 'Website' | translate }}">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="f-m" for="street">{{ 'Street' | translate }}</label>
+                                <input type="text" [(ngModel)]="street" class="form-control f-m" name="street" id="street" placeholder="{{ 'Street' | translate }}">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="f-m" for="commune">{{ 'Commune' | translate }}</label>
+                                <input type="text" [(ngModel)]="commune" class="form-control f-m" name="commune" id="commune" placeholder="{{ 'Commune' | translate }}">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="f-m" for="district">{{ 'District' | translate }}</label>
+                                <input type="text" [(ngModel)]="district" class="form-control f-m" name="district" id="district" placeholder="{{ 'District' | translate }}">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="f-m" for="city">{{ 'City' | translate }}</label>
+                                <input type="text" [(ngModel)]="city" class="form-control f-m" name="city" id="city" placeholder="{{ 'City' | translate }}">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="f-m" for="telephone">{{ 'Telephone' | translate }}</label>
+                                <input type="text" [(ngModel)]="telephone" class="form-control f-m" name="telephone" id="telephone" placeholder="{{ 'Telephone' | translate }}">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <div class="container-logo">
+                                    <div class="picture-container">
+                                        <div class="picture">
+                                            <img [src]="previewImg" class="picture-src" id="wizardPicturePreview" title="" />
+                                        </div>
+                                        <!-- <input type="file" id="wizard-picture" class="f-m" (change)="onFileChanged($event)" /> -->
+                                        <form>
+                                            <div class="custom-file" style="padding: 0;">
+                                                <input type="file" (change)="onFileChanged($event)" id="customFile" class="f-m" style="display: none;" />
+                                                <label class="btn-brow" for="customFile">{{ "choose_file" | translate }}</label
+                                          >
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <button class="btn-create f-m" (click)="update()">{{ 'update' | translate }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <ng-template #changePass>
+                <div class="card-body">
+                    <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" [mustMatch]="['newPassword', 'confirmPassword']">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="f-m" for="currentPassword">{{ 'Current_password' | translate }}</label>
+                                                <input type="password" [(ngModel)]="currentPassword" name="currentPassword" class="form-control f-m" id="currentPassword" placeholder="{{ 'Current_password' | translate }}" #curPassword="ngModel" [ngClass]="{ 'is-invalid': f.submitted && curPassword.invalid }"
+                                                    required>
+                                                <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                                                    <div class="f-m" *ngIf="password.errors.required">{{ 'Password_is_required' | translate }}</div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="f-m" for="newPassword">{{ 'NewPassword' | translate }}</label>
+                                            <input type="password" [(ngModel)]="newPassword" name="newPassword" class="form-control f-m" id="newPassword" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" placeholder="{{ 'NewPassword' | translate }}" required minlength="8">
+                                            <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                                                <div class="f-m" *ngIf="password.errors.required">{{ 'Password_is_required' | translate }}</div>
+                                                <div class="f-m" *ngIf="password.errors.minlength">{{ 'Password_must_least_at_8_character' | translate }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="f-m" for="confirmPassword">{{ 'Confirm_password' | translate }}</label>
+                                            <input type="password" [(ngModel)]="comfirmPassword" name="confirmPassword" class="form-control f-m" id="confirmPassword" [ngClass]="{ 'is-invalid': f.submitted && confirmPassword.invalid }" required placeholder="{{ 'Confirm_password' | translate }}"
+                                                #confirmPassword="ngModel">
+                                            <div *ngIf="f.submitted && confirmPassword.invalid" class="invalid-feedback">
+                                                <div class="f-m" *ngIf="confirmPassword.errors.required">{{ 'Confirm_password_is_required' | translate }}</div>
+                                                <div class="f-m" *ngIf="confirmPassword.errors.mustMatch">{{ 'Password_must_match' | translate }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <button class="btn-create f-m">{{ 'Change_Password' | translate }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            </ng-template>
+                        </div>
+                    </div>
+            </div>
+            <simple-notifications></simple-notifications>
+
+            <ngx-loading [show]="myLoading" [template]="customLoadingTemplate"></ngx-loading>

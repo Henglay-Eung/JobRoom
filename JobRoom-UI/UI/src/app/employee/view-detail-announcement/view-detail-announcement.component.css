@@ -1,0 +1,241 @@
+.t-content {
+  margin-top: 1%;
+  border: 1px solid #d6d6d691;
+  padding: 20px;
+  background-color: #fff;
+}
+.f-b {
+  font-weight: bold;
+  margin-left: 15px;
+}
+.form-check {
+  margin-left: 25px;
+}
+
+.f-m {
+  font-family: "Roboto", "Siemreap", sans-serif;
+}
+.cv-select {
+  margin-left: 40px;
+  width: 84%;
+}
+
+.custom-file-label {
+  margin-left: 40px;
+  width: 84%;
+}
+
+.m-l {
+  margin-left: 15px;
+}
+
+.v-title span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.btn-create {
+  font-family: "Roboto", "Siemreap", sans-serif;
+  margin-top: -70px;
+  float: right;
+  background-color: #00abe1;
+  white-space: nowrap;
+  border: none;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 3px;
+  font-size: 14px;
+  outline: none;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.c-logo {
+  padding: 40px;
+  min-width: 120px;
+  max-width: 150px;
+  border: 1px solid #dad3d3;
+  float: left;
+  max-width: 170px;
+  min-height: 100px;
+}
+
+.c-logo img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.c-position {
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+}
+
+.left-side {
+  padding: 10px;
+}
+
+.m-t-0 {
+  margin-top: 0 !important;
+}
+
+.c-icon {
+  margin-top: 1%;
+  margin-left: 5%;
+}
+
+.icon span {
+  color: #2595d4;
+  font-size: 20px;
+}
+
+.a-location span,
+.date span {
+  font-family: "Roboto", "Siemreap", sans-serif;
+  color: #575151;
+}
+
+.section1 {
+  margin-top: 1%;
+}
+
+.section2 {
+  margin-top: 1%;
+  margin-bottom: 10px;
+}
+
+.section span,
+.section1 span,
+.section2 span {
+  font-family: "Roboto", "Siemreap", sans-serif;
+  font-weight: bold;
+}
+
+.section .description,
+.section1 .description {
+  margin-top: 1%;
+  font-weight: 400;
+}
+
+.description ul li {
+  line-height: 25px;
+}
+
+.section2 .c-row {
+  margin-top: 1%;
+  font-weight: 400;
+}
+
+.section2 .c-title {
+  font-family: "Roboto", "Siemreap", sans-serif;
+  font-weight: bold;
+}
+
+.pdf {
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn-pdf {
+  background-color: #00abe1;
+  border: none;
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 3px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  margin-right: 35px;
+}
+
+.chat {
+  margin-top: 0px;
+}
+
+.chat i {
+  font-size: 18px;
+  color: #727272;
+  transition: 0.1s;
+}
+
+.chat i:hover {
+  transition: 0.1s;
+  color: #000;
+  cursor: pointer;
+}
+
+.ignore {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+@media (min-width: 1200px) {
+}
+
+/*Large devices (desktops, 992px and up)*/
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+}
+
+/*Medium devices (tablets, 768px and up)*/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .c-position {
+    margin-left: 20px;
+  }
+  .c-icon span {
+    margin-left: 20px;
+  }
+  .btn-create {
+    margin-top: -90px;
+    margin-right: -245px;
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .btn-create {
+    margin-top: -198px;
+    margin-right: -210px;
+  }
+
+  .c-logo {
+    padding: 20px;
+  }
+
+  .c-logo img {
+    margin-top: 15px;
+  }
+
+  .left-detail {
+    margin-top: 10px;
+  }
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+
+@media (max-width: 575.98px) {
+  .btn-create {
+    margin-top: -145px;
+    margin-right: 0px;
+  }
+  .left-detail {
+    margin-top: 10px;
+  }
+
+  .left-side {
+    margin-top: 10px;
+    padding: 0;
+  }
+}
+.cv-select {
+  width: 393px;
+  height: 38px;
+  border-radius: 4px;
+  border-color: rgb(212, 207, 207);
+}
+.cv-option-selector {
+  margin-left: 10%;
+}

@@ -1,0 +1,85 @@
+.t-title {
+  margin-bottom: 15px;
+}
+
+.t-title span {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.bread {
+  margin-bottom: 12px;
+}
+
+.bread span {
+  color: #919191;
+  cursor: pointer;
+  font-family: "Roboto", "Siemreap", sans-serif;
+  font-size: 15px;
+}
+
+.t-content {
+  border: 1px solid #d6d6d691;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.icon {
+  margin-top: 17%;
+}
+
+.cal-month-view .cal-open-day-events {
+  color: #fff;
+  background-color: blue !important;
+  -webkit-box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
+}
+
+mwl-calendar-month-view {
+  background-color: blue !important;
+}
+
+.my-btn {
+  border: none;
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 3px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.my-btn:hover{
+  opacity: 1;
+}
+
+.bgColor{
+  background-color: red;
+}
+
+.f-m {
+  font-family: "Roboto", "Siemreap", sans-serif;
+}
+
+.ok {
+  background-color: #00abe1;
+}
+
+.my-close {
+  background-color: #6c757d;
+}
+
+.btn-p {
+  padding: 0rem 0.75rem !important;
+}
+
+.btn-p span {
+  margin-top: 25% !important;
+}
+
+.m-b {
+  margin-bottom: 8px;
+}

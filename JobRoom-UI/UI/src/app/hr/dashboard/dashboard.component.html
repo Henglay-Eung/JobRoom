@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-sm-6 col-md-3">
+    <div class="card card-stats card-round">
+      <div class="card-body" routerLink="../active-announcement" style="cursor: pointer;">
+        <div class="row">
+          <div class="col-3">
+            <div class="icon-big text-center">
+              <img src="../../../assets/img/loudspeaker.png" height="50px">
+            </div>
+          </div>
+          <div class="col-9 pl-0 col-stats">
+            <div class="numbers">
+              <p class="card-category f-m">{{ 'active_announcement' | translate }}</p>
+              <h4 class="card-title f-m">{{countActiveAnnouncement}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <div class="card card-stats card-round">
+      <div class="card-body" routerLink="../close-announcement" style="cursor: pointer;">
+        <div class="row">
+          <div class="col-3">
+            <div class="icon-big text-center">
+              <img src="../../../assets/img/close_announcement.png" height="50px">
+            </div>
+          </div>
+          <div class="col-9 pl-0 col-stats">
+            <div class="numbers">
+              <p class="card-category f-m">{{ 'close_announcement' | translate }}</p>
+              <h4 class="card-title f-m">{{countCloseAnnouncement}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <div class="card card-stats card-round">
+      <div class="card-body" routerLink="../candidate" style="cursor: pointer;">
+        <div class="row">
+          <div class="col-3">
+            <div class="icon-big text-center">
+              <img src="../../../assets/img/candidate.png" height="50px">
+            </div>
+          </div>
+          <div class="col-9 pl-0 col-stats">
+            <div class="numbers">
+              <p class="card-category f-m">{{ 'candidate' | translate }}</p>
+              <h4 class="card-title f-m">{{countCandidate}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <div class="card card-stats card-round">
+      <div class="card-body" routerLink="../schedule" style="cursor: pointer;">
+        <div class="row">
+          <div class="col-3">
+            <div class="icon-big text-center">
+              <img src="../../../assets/img/schedule.png" height="50px">
+            </div>
+          </div>
+          <div class="col-9 pl-0 col-stats">
+            <div class="numbers">
+              <p class="card-category f-m">{{ 'schedule' | translate }}</p>
+              <h4 class="card-title f-m">{{countSchedule}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

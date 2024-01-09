@@ -1,0 +1,30 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.1'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group = 'com.hrdcenter.com'
+//version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.vladmihalcea', name: 'hibernate-types-52', version: '2.10.2'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile group: 'org.assertj', name: 'assertj-core', version: '3.18.1'
+    compile group: 'com.corundumstudio.socketio', name: 'netty-socketio', version: '1.7.7'
+    compile group: 'io.socket', name: 'socket.io-client', version: '2.0.0'
+    runtimeOnly 'com.h2database:h2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compile group: 'com.vladmihalcea', name: 'hibernate-types-52', version: '2.10.2'
+    implementation 'org.postgresql:postgresql'
+}
+
+test {
+    useJUnitPlatform()
+}

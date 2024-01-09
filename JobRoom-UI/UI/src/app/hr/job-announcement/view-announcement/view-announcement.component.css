@@ -1,0 +1,118 @@
+.t-content {
+  margin-top: 1%;
+  border: 1px solid #d6d6d691;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.v-title span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.bread {
+  margin-bottom: 10px;
+}
+
+.bread span {
+  color: #919191;
+  cursor: pointer;
+  font-family: "Roboto", "Siemreap", sans-serif;
+  font-size: 15px;
+}
+
+.c-logo {
+  padding: 40px;
+  min-width: 120px;
+  max-width: 150px;
+  border: 1px solid #dad3d3;
+  float: left;
+  max-width: 170px;
+  min-height: 100px;
+}
+
+.c-logo img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.c-position {
+  font-size: 20px;
+  color: #000;
+}
+
+.left-side {
+  padding: 10px;
+}
+
+.c-icon {
+  margin-top: 1%;
+  margin-left: 5%;
+}
+
+.icon span {
+  color: #2595d4;
+  font-size: 20px;
+}
+
+.a-location span,
+.date span {
+  color: #575151;
+}
+
+.section1 {
+  margin-top: 1%;
+}
+
+.section2 {
+  margin-top: 1%;
+  margin-bottom: 10px;
+}
+
+.section span,
+.section1 span,
+.section2 span {
+  font-weight: bold;
+}
+
+.section .description,
+.section1 .description {
+  margin-top: 1%;
+  font-weight: 400;
+}
+
+.description ul li {
+  line-height: 25px;
+}
+
+.section2 .c-row {
+  margin-top: 1%;
+  font-weight: 400;
+}
+
+.section2 .c-title {
+  font-family: 'Roboto','Siemreap', sans-serif;
+  font-weight: bold;
+}
+
+.pdf {
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.f-m{
+  font-family: 'Roboto','Siemreap', sans-serif;
+}
+
+.btn-pdf {
+  font-family: "Roboto", "Siemreap", sans-serif;
+  background-color: #00abe1;
+  border: none;
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 3px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}

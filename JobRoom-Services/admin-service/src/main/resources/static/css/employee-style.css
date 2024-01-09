@@ -1,0 +1,195 @@
+.profile-thumbnail{
+    height: 50px;
+    width: 50px;
+    border: solid black;
+}
+
+.profile-thumbnail-name{
+    font-weight: bold;
+    padding: 10px
+}
+
+.modal-warning-title{
+    color: #ff0000; text-align : center;font-weight: bold
+}
+
+.delete-buttons-wrapper{
+    text-align: right;
+    padding: 15px;
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.post-image{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.post-image-modal{
+    width: 460px;
+    height: 250px;
+    object-fit: cover;
+}
+
+/*on off button*/
+.custom-control-label::before {
+    background-color: #5C5A5A;
+    border: none;
+}
+.custom-switch .custom-control-label::after{
+    background-color: white;
+}
+.fa-eye{
+    color: #5C5A5A;
+}
+
+/*comment style*/
+
+.post-image-modal-comment{
+    width: 375.5px;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+
+.comments-list {
+    padding: 0;
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+.comments-list .comment {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.comments-list .comment .comment-body {
+    margin-left: 50px;
+}
+
+.post .post-footer .comments-list .comment .comment-heading {
+    display: block;
+    width: 100%;
+}
+
+.comments-list .comment .avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+.comments-list .comment .comment-heading .user {
+    font-size: 14px;
+    font-weight: bold;
+    display: inline;
+    margin-top: 0;
+    margin-right: 10px;
+}
+.comments-list .comment .comment-heading .time {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 0;
+    display: inline;
+}
+.comments-list .comment > .comments-list {
+    margin-left: 50px;
+}
+
+
+
+
+
+/*comment list on comment display modal*/
+.comments-main{
+    background: #FFF;
+}
+.comment time, .comment:hover time,.icon-rocknroll, .like-count {
+    -webkit-transition: .25s opacity linear;
+    transition: .25s opacity linear;
+}
+.comments-main ul li{
+    list-style: none;
+}
+.comments .comment {
+    padding: 5px 10px;
+    background: #D3D3D3;
+}
+.comments .comment:hover time{
+    opacity: 1;
+}
+.comments .user-img img {
+    width: 50px;
+    height: 50px;
+}
+.comments .comment h4 {
+    display: inline-block;
+    font-size: 18px;
+}
+.comments .comment h4 a {
+    color: #404040;
+    text-decoration: none;
+}
+.comments .comment .icon-rocknroll {
+    color: #545454;
+    font-size: .85rem;
+}
+.comments .comment .icon-rocknroll:hover {
+    opacity: .5;
+}
+.comments .comment time,.comments .comment .like-count,.comments .comment .icon-rocknroll {
+    font-size: .75rem;
+    opacity: 0;
+}
+.comments .comment time, .comments .comment .like-count {
+    font-weight: 300;
+}
+.comments .comment p {
+    font-size: 15px;
+}
+.comments .comment p .reply {
+    color: #BFBFA8;
+    cursor: pointer;
+}
+.comments .comment .active {
+    opacity: 1;
+}
+.icon-rocknroll {
+    background: none;
+    outline: none;
+    cursor: pointer;
+    margin: 0 .125rem 0 0;
+}
+.comments .comment:hover .icon-rocknroll,.comments .comment:hover .like-count {
+    opacity: 1;
+}
+.comment-box-main{
+    background: #CA1D5F;
+}
+.user-name-font{
+    font-weight: bold;
+}
+
+.no-bullet{
+    list-style-type: none;
+}
+/*@media (min-width: 320px) and (max-width: 480px){*/
+/*    .comments .comment h4 {*/
+/*        font-size: 12px;*/
+/*    }*/
+/*    .comments .comment p{*/
+/*        font-size: 11px;*/
+/*    }*/
+/*    .comment-box-main .send-btn button{*/
+/*        margin-left: 5px;*/
+/*    }*/
+/*}*/
+
+

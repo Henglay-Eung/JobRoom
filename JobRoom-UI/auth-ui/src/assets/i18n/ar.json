@@ -1,0 +1,60 @@
+{
+    "signup_to_jobroom":"ចុះឈ្មោះទៅកាន់ JobRoom",
+    "signup_to_connex":"ចុះឈ្មោះទៅកាន់ JobRoom",
+    "already_member":"ធ្លាប់បានធ្វើជាសមាជិក",
+    "company_name":"ឈ្មោះក្រុមហ៊ុន",
+    "company_name_is_required":"តម្រូវបញ្ចូលឈ្មោះក្រុមហ៊ុន",
+    "company_name_must_input_text":"ឈ្មោះក្រុមហ៊ុនតម្រូវបញ្ចូលជាអក្សរ",
+    "company_name_must_maxlength_50_character":"ឈ្មោះក្រុមហ៊ុនតម្រូវបញ្ចូលយ៉ាងច្រើន៥០តួរអក្សរ",
+
+    "company_name_must_minlength_4_character":"ឈ្មោះក្រុមហ៊ុនតម្រូវបញ្ចូលយ៉ាងតិច៤តួរអក្សរ",
+
+    "email_is_required":"អុីមែលតម្រូវបញ្ចូល",
+
+    "email_input_is_incorrect":"អុីមែលបញ្ចូលមិនត្រឺមត្រូវ",
+
+    "password":"លេខសម្ងាត់",
+
+    "login":"ចូល",
+
+    "username":"ឈ្មោះអ្នកប្រើប្រាស់",
+
+    "username_is_required":"ឈ្មោះអ្នកប្រើប្រាស់តម្រូវបញ្ចូល",
+
+    "password_is_required":"លេខសម្ងាត់តម្រូវបញ្ចូល",
+
+    "password_must_maxlength_20_character":"លេខសម្ងាត់តម្រូវបញ្ចូលយ៉ាងតិច២០តួរអក្សរ",
+
+    "secodary_email":"អុីមែលបណ្តោះអាសន្ន",
+
+    "secodary_email_is_required":"អុីមែលបណ្តោះអាសន្នតម្រូវបញ្ចូល",
+
+    "password_at_least_8chracter":"លេខសម្ងាត់តម្រូវបញ្ចូលយ៉ងតិច ៨​ តួរ",
+
+    "password_can_be_make_120_character_long":"លេខសម្ងាត់បញ្ចូលច្រើនបំផុត​​​ ១២០ តួរ",
+
+
+    "create_an_account":"បង្កើត account",
+
+    "secodary_email_input_is_incorrect":"អុីមែលបណ្តោះអាសន្នបញ្ចូលមិនត្រឹមត្រូវ",
+
+    "phone_number":"លេខទូរស័ព្ទ",
+
+    "phone_number_is_required":"លេខទូរស័ព្ទតម្រូវបញ្ចូល",
+
+    "phone_number_maxlength_10_character":"លេខទូរស័ព្ទតម្រូវបញ្ចូលយ៉ាងច្រើន​ ១០​ តួរ",
+
+    "street":"ផ្លូវ",
+
+    "street_is_required":"ផ្លូវតម្រូវបញ្ចូល",
+
+    "commune":"ឃុំ",
+
+    "commune_is_required":"ឃុំតម្រូវបញ្ចូល",
+
+    "district":"ស្រុក",
+
+    "district_is_required":"ស្រុកតម្រូវបញ្ចូល",
+
+    "city_is_required":"ទីក្រុងតម្រូវបញ្ចូល"
+}

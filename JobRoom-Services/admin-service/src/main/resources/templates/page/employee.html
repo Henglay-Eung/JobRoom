@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      layout:decorate="~{layouts/index}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" th:href="@{/css/employee-style.css}"/>
+    <!--        jQuery-->
+    <script type="text/javascript" src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/employeejs.js" th:src="@{/js/employeejs.js}"></script>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="m-0 text-dark" style="font-size: 0.5cm"><i class="fas fa-home fa-1x"></i> <i class="fas fa-chevron-right mx-2"></i>
+                        Employee</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container-fluid"  >
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right" id="search_employee"
+                                           placeholder="Search">
+
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default"  id="search_employee_button">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center">ID</th>
+                                    <th style="text-align: center">FullName</th>
+                                    <th style="text-align: center">Email</th>
+                                    <th style="text-align: center">Gender</th>
+                                    <th style="text-align: center">Status</th>
+                                    <th style="text-align: center;">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="employee : ${employees.data}" style="text-align: center">
+                                    <td th:text="${employee.id}" style="text-align: center">1</td>
+                                    <td th:text="${employee.fullName}" style="text-align: center">John Doe</td>
+                                    <td th:text="${employee.email}" style="text-align: center">jobndoe2@gmail.com</td>
+                                    <td th:text="${employee.gender}" style="text-align: center">Male</td>
+<!--                                    <td th:text="${employee.status}" style="text-align: center"></td>-->
+                                    <td th:id="${'displayPostcustomSwitch'+ employee.id}" th:text="${employee.status ? 'Active' : 'Inactive'}" style="text-align: center"></td>
+<!--                                    <td th:id="${'displayPostcustomSwitch'+ employee.id}" th:text="${employee.status ? 'Active' : 'Inactive'}" style="text-align: center"><span class="tag tag-success">Approved</span></td>-->
+                                    <td>
+                                        <div style="display: flex;justify-content: space-between; margin: 0px">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" th:checked="${employee.status} ? 'checked'" th:id="${'customSwitch'+employee.id}">
+                                            <label class="custom-control-label pointer" href="" th:onclick="'disable(\'customSwitch' + ${employee.id} + '\',\''+ ${employee.id} + '\');'"  th:for="${'customSwitch'+employee.id}"></label>
+                                        </div>
+                                            <a class="pointer">
+                                                <i class="far fa-eye"
+                                                   th:href="@{/get_single_employee/{id}(id=${employee.id})}"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <div th:if="${employees.pagination != null}">
+                        <nav aria-label="Page navigation example" th:if="${employees.pagination.totalPages gt 1}">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item"
+                                    th:classappend="${employees.pagination.pageNumber eq 0} ? 'disabled'">
+                                    <a class="page-link"
+                                       th:href="@{/employee/{page}(page=${employees.pagination.pageNumber lt 1 ? 0 : employees.pagination.pageNumber - 1})}"
+                                       tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item"
+                                    th:classappend="${i eq employees.pagination.pageNumber + 1} ? 'active'"
+                                    th:each="i : ${#numbers.sequence( 1, employees.pagination.totalPages, 1)}">
+                                    <a class="page-link" th:href="@{/employee/{page}(page=${i - 1})}"
+                                       th:text="${i}">1</a>
+                                </li>
+                                <li class="page-item"
+                                    th:classappend="${employees.pagination.pageNumber + 1 eq employees.pagination.totalPages} ? 'disabled'">
+                                    <a class="page-link"
+                                       th:href="@{'/employee/' + ${employees.pagination.pageNumber + 1}}"
+                                    >Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        </div>
+                        <div th:unless="${employees.pagination != null}">
+                            <h4 style="text-align: center; padding: 20px;">Sorry, there is no result for this employee.</h4>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Employee Detail -->
+    <div aria-modal="true" class="modal fade show" id="display-employee-modal" role="dialog" style="display: none;">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Employee Detail</h4>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td><img alt="AdminLTE Logo" class="brand-image img-circle profile-thumbnail" id="employeeProfilePic"
+                                     src="@{/image/image-placeholder-big.jpg}"></td>
+                            <td id="employeeName" class="profile-thumbnail-name">Kaka hukhuk</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <table class="table table-bordered">
+                        <tbody style="font-weight: bold">
+                        <tr>
+                            <td>Gender</td>
+                            <td id="employeeDetail">Male</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td id="employeeEmail">123@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td id="employeeCity">Kampot</td>
+                        </tr>
+                        <tr>
+                            <td>Telephone</td>
+                            <td id="employeeTelephone">Cambodia</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!--    set status modal-->
+    <div aria-modal="true" class="modal fade show" id="set-status-modal" role="dialog" style="display: none;">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title modal-warning-title">Warning</h4>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4 id="modal-text" style="text-align: center">Do you want to change the status of this post to true?</h4>
+                </div>
+                <div style="text-align: right;
+    padding: 15px;" class="delete-buttons-wrapper">
+
+                    <a href="" class="btn btn-danger text-white" id="btn-disable-enable">
+                        Yes
+                    </a>
+                    <a class="btn btn-primary text-white" data-dismiss="modal" type="button">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+</div>
+</body>
+</html>
+
