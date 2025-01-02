@@ -15,7 +15,7 @@ HTML, CSS, TypeScript, Angular, Java, Spring Boot, PostgreSQL, OAuth2, Thymeleaf
 
 ### Homepage
 
-![Homepage](https://github.com/Henglay-Eung/Test/blob/master/JobRoom-homepage.png)
+![Homepage](https://github.com/Henglay-Eung/Test/blob/master/Homepage.png)
 
 ### Applying for job
 
@@ -24,3 +24,13 @@ HTML, CSS, TypeScript, Angular, Java, Spring Boot, PostgreSQL, OAuth2, Thymeleaf
 ### Job announcement builder
 
 ![builder](https://github.com/Henglay-Eung/Test/blob/master/Create-job-announcement.png)
+
+### User flow diagram
+
+![diagram](https://github.com/Henglay-Eung/Test/blob/master/user%20flow%20diagram.png)
+
+### Microservices architecture diagram
+
+![diagram](https://github.com/Henglay-Eung/Test/blob/master/microservices%20architechture%20diagram.png)
+
+
