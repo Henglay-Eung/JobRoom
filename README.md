@@ -7,6 +7,7 @@ A microservices-based platform for job seekers to apply for jobs and HR professi
 HTML, CSS, TypeScript, Angular, Java, Spring Boot, PostgreSQL, OAuth2, Thymeleaf, etc.
 
 ### My responsibilities:
+ (This is a new repository; the original project was private due to privacy concerns.).
 
 - Led a team of 5 engineers to analyze and design 7 microservice modules, ensuring alignment with the bussiness requirements.
 - Implemented 2 microservice modules, including 20+ RESTful API endpoints using Spring Boot and Spring Data JPA, integrating with OAuth2 authentication for Data Security.
