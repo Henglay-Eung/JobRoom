@@ -1,13 +1,14 @@
 <div class="content-navbar">
   <div class="container">
     <div class="row navbar">
+      <!-- JobRoom Logo -->
       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 jm-logo" routerLink="/">
         <img src="assets/img/logo.png" alt="logo" width="141px" height="38px" />
       </div>
 
-      <div
-        class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-end"
-      >
+      <!-- Language and Profile toggles -->
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-end">
+        <!-- Language toggle -->
         <mat-form-field class="no-line" style="width: 95px; height: 0;">
           <mat-select [value]="language.value" (valueChange)="changeLocale($event)">
             <mat-select-trigger>
@@ -25,7 +26,8 @@
           </mat-select>
         </mat-form-field>
 
-        <div class="btn-group" (click)="toggleDialog()">
+        <!-- Profile toggle -->
+        <div class="btn-group" (click)="toggleDialog()" [style.cursor]="'pointer'">
           <img
             class="rounded-circle z-depth-2"
             width="40px"
@@ -37,14 +39,15 @@
         <div *ngIf="isHideDialog">
           <ul class="dropdown-menu">
             <li role="menuitem">
-              <a class="dropdown-item"
-                ><img
+              <a class="dropdown-item">
+                <img
                   class="rounded-circle z-depth-2"
                   width="40px"
                   height="40px"
                   alt="100x100"
                   [src]="employee.profilePicture"
-              /></a>
+                />
+              </a>
             </li>
             <li>
               <a class="dropdown-item profile-name f-m" >{{employee.fullName}}</a>
