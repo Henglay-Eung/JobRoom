@@ -1,11 +1,11 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://35.240.132.240:1804/job_announcement_service
-    username: spring
-    password: spring!@#
+    url: jdbc:postgresql://localhost:5432/postgres  # Add database name here
+    username: postgres
+    password: postgres
   jpa:
     hibernate:
       ddl-auto: update
 server:
-  port: 8080
+  port: 8081
