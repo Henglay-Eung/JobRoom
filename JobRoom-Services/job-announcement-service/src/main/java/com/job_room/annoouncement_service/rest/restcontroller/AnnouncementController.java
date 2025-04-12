@@ -285,14 +285,14 @@ public class AnnouncementController {
 
                 for (int i = 0; i < announcementDtoList.size(); i++) {
                     //TODO consume company
-                    Company company = announcementService.companyById(announcementDtoList.get(i).getCompanyId());
+//                    Company company = announcementService.companyById(announcementDtoList.get(i).getCompanyId());
                     announcementResponseList.add(modelMapper.map(announcementDtoList.get(i), AnnouncementResponseWithCompany.class));
-                    if (company != null) {
-                        //TODO add company to response when not null
-                        announcementResponseList.get(i).setCompany(company);
-                    } else {
-                        announcementResponseList.get(i).setCompany(null);
-                    }
+//                    if (company != null) {
+//                        //TODO add company to response when not null
+//                        announcementResponseList.get(i).setCompany(company);
+//                    } else {
+//                        announcementResponseList.get(i).setCompany(null);
+//                    }
 
 
                 }
