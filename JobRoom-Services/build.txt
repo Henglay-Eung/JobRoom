@@ -1,0 +1,2 @@
+docker compose run --rm gradle -p job-announcement-service build: to run build job-announcement-service
+docker compose run --rm gradle -p auth-service build:  to run build auth-service

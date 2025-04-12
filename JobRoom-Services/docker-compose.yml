@@ -1,0 +1,56 @@
+
+services:
+  gradle:
+    image: gradle:6.8.3-jdk11  # Matches your Java 11 setup
+    volumes:
+      - .:/app                  # Mounts current dir to /app in container
+    working_dir: /app           # Sets working directory to /app
+    entrypoint: ["gradle"]   
+  postgres:
+    image: postgres:16
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  job-announcement:  # Your Spring Boot service
+    build: ./job-announcement-service  # Path to your Spring Boot service
+    container_name: job-announcement-service
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8081:8081"
+    networks:
+      - app-network
+  auth:
+    build: ./auth-service  # Path to your Auth service
+    container_name: auth-service
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8082:8082"
+    networks:
+      - app-network
+    
+
+volumes:
+  pgdata:
+
+networks:
+  app-network:
+    driver: bridge
