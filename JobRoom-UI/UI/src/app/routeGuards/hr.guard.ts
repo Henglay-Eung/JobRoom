@@ -12,8 +12,8 @@ export class HrGuard implements CanActivateChild  {
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
 
     let role = this.cookie.get("role",true,"hrd")
-    if(role !== "company")
-     window.location.href = 'https://account.kshrd-ite.com/'
+    // if(role !== "company")
+    //  window.location.href = 'https://account.kshrd-ite.com/'
     return true;
   }
 }

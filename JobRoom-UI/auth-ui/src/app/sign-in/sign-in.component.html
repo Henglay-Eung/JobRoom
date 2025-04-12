@@ -6,7 +6,7 @@
     <div class="col-md-6">
       <div class="pb-2">
         <h3 class="signin-text">Sign In</h3>
-        <span id="text-newaccount">New User? Create An Account As &nbsp;</span><span class="link-signup"
+        <span id="text-newaccount">New User? Create An Account As </span><span class="link-signup"
           (click)="toSignUpEmployee()">Employee&nbsp;</span><span id="text-or">Or&nbsp;</span><span class="link-signup"
           (click)="toSignUpHR()">HR</span>
       </div>
@@ -20,10 +20,10 @@
             }" />
           <div *ngIf="form.get('email').touched && form.get('email').invalid">
             <div class="error" *ngIf="form.get('email').errors.required">
-              Email Name is required
+              Email is required
             </div>
             <div class="error" *ngIf="form.get('email').errors.email">
-              Email incorrect
+              Email is incorrect
             </div>
           </div>
         </div>

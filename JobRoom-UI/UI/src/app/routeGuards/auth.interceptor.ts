@@ -21,14 +21,14 @@ export class AuthInterceptor implements HttpInterceptor {
         authenticated_userid: "connex"
       }
     let token =  this.cookie.get("token",true,"hrd")
-    if (req.url.search("token") === -1 ) {
-        req = req.clone({
-          setHeaders: {
-            'Authorization': `Bearer ${token}`,
-          }
-        });
+    // if (req.url.search("token") === -1 ) {
+    //     req = req.clone({
+    //       setHeaders: {
+    //         'Authorization': `Bearer ${token}`,
+    //       }
+    //     });
        
-    }
+    // }
     return next.handle(req);
   }
 }

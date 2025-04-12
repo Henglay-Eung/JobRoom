@@ -23,7 +23,7 @@ import {
 
 import { BsModalService } from "ngx-bootstrap/modal";
 import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
-import { AngularEditorConfig } from "@kolkov/angular-editor";
+// import { AngularEditorConfig } from "@kolkov/angular-editor";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
 import { BsDatepickerConfig } from "ngx-bootstrap";
@@ -72,64 +72,64 @@ export class ScheduleComponent implements OnInit {
   emailHr: string;
   passwordHr: string;
 
-  config: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: "5rem",
-    minHeight: "10rem",
-    placeholder: "Enter text here...",
-    translate: "no",
-    defaultParagraphSeparator: "p",
-    defaultFontName: '"Roboto", "Siemreap", sans-serif',
-    outline: false,
-    toolbarHiddenButtons: [
-      [
-        // "undo",
-        // "redo",
-        "strikeThrough",
-        "subscript",
-        "superscript",
-        // 'justifyLeft',
-        // 'justifyCenter',
-        // 'justifyRight',
-        // "justifyFull",
-        "indent",
-        "outdent",
-        // 'insertUnorderedList',
-        // 'insertOrderedList',
-        // 'heading',
-        // 'fontName'
-      ],
-      [
-        // 'fontSize',
-        // "textColor",
-        // "backgroundColor",
-        "customClasses",
-        // "link",
-        "unlink",
-        // "insertImage",
-        "insertVideo",
-        "insertHorizontalRule",
-        // "removeFormat",
-        "toggleEditorMode",
-      ],
-    ],
-    customClasses: [
-      {
-        name: "quote",
-        class: "quote",
-      },
-      {
-        name: "redText",
-        class: "redText",
-      },
-      {
-        name: "titleText",
-        class: "titleText",
-        tag: "h1",
-      },
-    ],
-  };
+  // config: AngularEditorConfig = {
+  //   editable: true,
+  //   spellcheck: true,
+  //   height: "5rem",
+  //   minHeight: "10rem",
+  //   placeholder: "Enter text here...",
+  //   translate: "no",
+  //   defaultParagraphSeparator: "p",
+  //   defaultFontName: '"Roboto", "Siemreap", sans-serif',
+  //   outline: false,
+  //   toolbarHiddenButtons: [
+  //     [
+  //       // "undo",
+  //       // "redo",
+  //       "strikeThrough",
+  //       "subscript",
+  //       "superscript",
+  //       // 'justifyLeft',
+  //       // 'justifyCenter',
+  //       // 'justifyRight',
+  //       // "justifyFull",
+  //       "indent",
+  //       "outdent",
+  //       // 'insertUnorderedList',
+  //       // 'insertOrderedList',
+  //       // 'heading',
+  //       // 'fontName'
+  //     ],
+  //     [
+  //       // 'fontSize',
+  //       // "textColor",
+  //       // "backgroundColor",
+  //       "customClasses",
+  //       // "link",
+  //       "unlink",
+  //       // "insertImage",
+  //       "insertVideo",
+  //       "insertHorizontalRule",
+  //       // "removeFormat",
+  //       "toggleEditorMode",
+  //     ],
+  //   ],
+  //   customClasses: [
+  //     {
+  //       name: "quote",
+  //       class: "quote",
+  //     },
+  //     {
+  //       name: "redText",
+  //       class: "redText",
+  //     },
+  //     {
+  //       name: "titleText",
+  //       class: "titleText",
+  //       tag: "h1",
+  //     },
+  //   ],
+  // };
 
   @ViewChild("templates", { static: true }) templates: TemplateRef<any>;
 

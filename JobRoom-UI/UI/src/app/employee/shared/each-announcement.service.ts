@@ -25,8 +25,8 @@ export class EachAnnouncementService {
     currentPage
   ): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApi +
-        "announcements-employees/?page=" +
+      this.baseAPI.baseApiAnnouncement +
+        "/announcements-employees/?page=" +
         currentPage +
         "&startDate=" +
         startDate +

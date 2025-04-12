@@ -22,12 +22,12 @@ export class SignInComponent implements OnInit {
   pw: string = 'string'
 
   form = new FormGroup({
-    email: new FormControl('', [
+    email: new FormControl('henglayeung@gmail.com', [
       Validators.required,
       Validators.email,
       Validators.pattern('')
     ]),
-    password: new FormControl('', [
+    password: new FormControl('password', [
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(128),
@@ -58,6 +58,8 @@ export class SignInComponent implements OnInit {
       "provision_key": this.provision_key,
       "authenticated_userid": "connex"
     }
+    //For testing
+    window.location.href = 'http://localhost:4200'
 
     this.auth.retrieveToken(user).subscribe((data: any) => {
       this.checkUser(this.form.get('email').value, this.form.get('password').value)
@@ -81,11 +83,9 @@ export class SignInComponent implements OnInit {
         this.saveCredential('role',data.data.role)
         if (data.data.role === 'company') {
           window.location.href = 'https://jobroom.kshrd-ite.com/hr/dashboard'
-         
         } 
         else{
-           window.location.href = 'https://connex.kshrd-ite.com/home'
-        
+          window.location.href = 'https://connex.kshrd-ite.com/home'
         }
       }
     })
@@ -106,11 +106,8 @@ export class SignInComponent implements OnInit {
     this.router.navigate(['/sign-up-employee'])
   }
 
-
   //TODO: redirect to sign up hr
   toSignUpHR() {
     this.router.navigate(['/sign-up-hr'])
   }
-
-
 }

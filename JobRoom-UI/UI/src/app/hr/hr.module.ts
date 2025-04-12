@@ -16,9 +16,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ViewAnnouncementComponent } from './job-announcement/view-announcement/view-announcement.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularEditorModule } from '@kolkov/angular-editor';
+// import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule } from '@angular/common/http'
-import { NgxTagsModule} from 'ngx-tags';
+// import { NgxTagsModule} from 'ngx-tags';
 import { MatButtonModule, MatDatepickerModule,MatOptionModule,MatSelectModule, MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angular/material';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -79,11 +79,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgxPaginationModule,
     ModalModule.forRoot(),
     FormsModule,
-    AngularEditorModule,
+    // AngularEditorModule,
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,MatOptionModule, MatSelectModule, MatIconModule,
-    NgxTagsModule,
+    // NgxTagsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatDatepickerModule,

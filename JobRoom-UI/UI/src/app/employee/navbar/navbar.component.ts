@@ -66,18 +66,12 @@ export class NavbarComponent implements OnInit{
   }
 
   ngOnInit(){
+    // For testing
+    this.userID = "1";
     this.employeeService.getEmployeeDetails(this.userID).subscribe((res: any)=>{
       this.employee = res.data;
     })
     this.icon.registerFontClassAlias('fontawesome', 'fa');
-
-    this.employee = {
-      fullName: "fullName",
-      email: "henglayeung@gmail.com",
-      profilePicture: "https://media.licdn.com/dms/image/v2/D4E35AQEqiPQL8GH7VA/profile-framedphoto-shrink_400_400/profile-framedphoto-shrink_400_400/0/1728525788195?e=1740798000&v=beta&t=fKZu7jBFUsDH6YcsDJcC67V96TzLe88ATiYLBsyQnxA",
-      uuid: "1231232131",
-
-    }
   }
     //TODO: click to logout
     logout(){

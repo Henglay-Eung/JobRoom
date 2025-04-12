@@ -6,7 +6,7 @@ import { Component, OnInit, TemplateRef } from "@angular/core";
 import { BsModalService, ModalOptions } from "ngx-bootstrap/modal";
 import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
 import { NotificationsService } from 'angular2-notifications';
-import { NgxEncryptCookieService } from 'ngx-encrypt-cookie';
+// import { NgxEncryptCookieService } from 'ngx-encrypt-cookie';
 import {
   FormBuilder,
   FormControl,
@@ -19,6 +19,7 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { Observable, Observer } from "rxjs";
 import { data } from "jquery";
+import { NgxEncryptCookieService } from "ngx-encrypt-cookie";
 
 @Component({
   selector: "app-view-detail-announcement",

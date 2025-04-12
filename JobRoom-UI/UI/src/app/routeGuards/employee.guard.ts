@@ -13,8 +13,8 @@ export class EmployeeGuard implements CanActivate  {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
   
     let role = this.cookie.get("role",true,"hrd")
-    if(role !== "employee")
-    window.location.href = 'https://account.kshrd-ite.com/'
+    // if(role !== "employee")
+    // window.location.href = 'https://account.kshrd-ite.com/'
     return true;
   }
   

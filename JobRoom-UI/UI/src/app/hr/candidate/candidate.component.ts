@@ -3,7 +3,7 @@ import { NgxEncryptCookieService } from 'ngx-encrypt-cookie';
 import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 import { BsModalService } from "ngx-bootstrap/modal";
 import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
-import { AngularEditorConfig } from "@kolkov/angular-editor";
+// import { AngularEditorConfig } from "@kolkov/angular-editor";
 import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
 import { HrService } from "../shared/hr.service";
 import { DatePipe } from "@angular/common";
@@ -84,64 +84,64 @@ export class CandidateComponent implements OnInit {
   idHr: any;
   companyName: string;
 
-  config: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: "5rem",
-    minHeight: "10rem",
-    placeholder: "Enter text here...",
-    translate: "no",
-    defaultParagraphSeparator: "p",
-    defaultFontName: '"Roboto", "Siemreap", sans-serif',
-    outline: false,
-    toolbarHiddenButtons: [
-      [
-        // "undo",
-        // "redo",
-        "strikeThrough",
-        "subscript",
-        "superscript",
-        // 'justifyLeft',
-        // 'justifyCenter',
-        // 'justifyRight',
-        // "justifyFull",
-        "indent",
-        "outdent",
-        // 'insertUnorderedList',
-        // 'insertOrderedList',
-        // 'heading',
-        // 'fontName'
-      ],
-      [
-        // 'fontSize',
-        // "textColor",
-        // "backgroundColor",
-        "customClasses",
-        // "link",
-        "unlink",
-        // "insertImage",
-        "insertVideo",
-        "insertHorizontalRule",
-        // "removeFormat",
-        "toggleEditorMode",
-      ],
-    ],
-    customClasses: [
-      {
-        name: "quote",
-        class: "quote",
-      },
-      {
-        name: "redText",
-        class: "redText",
-      },
-      {
-        name: "titleText",
-        class: "titleText",
-        tag: "h1",
-      },
-    ],
-  };
+  // config: AngularEditorConfig = {
+  //   editable: true,
+  //   spellcheck: true,
+  //   height: "5rem",
+  //   minHeight: "10rem",
+  //   placeholder: "Enter text here...",
+  //   translate: "no",
+  //   defaultParagraphSeparator: "p",
+  //   defaultFontName: '"Roboto", "Siemreap", sans-serif',
+  //   outline: false,
+  //   toolbarHiddenButtons: [
+  //     [
+  //       // "undo",
+  //       // "redo",
+  //       "strikeThrough",
+  //       "subscript",
+  //       "superscript",
+  //       // 'justifyLeft',
+  //       // 'justifyCenter',
+  //       // 'justifyRight',
+  //       // "justifyFull",
+  //       "indent",
+  //       "outdent",
+  //       // 'insertUnorderedList',
+  //       // 'insertOrderedList',
+  //       // 'heading',
+  //       // 'fontName'
+  //     ],
+  //     [
+  //       // 'fontSize',
+  //       // "textColor",
+  //       // "backgroundColor",
+  //       "customClasses",
+  //       // "link",
+  //       "unlink",
+  //       // "insertImage",
+  //       "insertVideo",
+  //       "insertHorizontalRule",
+  //       // "removeFormat",
+  //       "toggleEditorMode",
+  //     ],
+  //   ],
+  //   customClasses: [
+  //     {
+  //       name: "quote",
+  //       class: "quote",
+  //     },
+  //     {
+  //       name: "redText",
+  //       class: "redText",
+  //     },
+  //     {
+  //       name: "titleText",
+  //       class: "titleText",
+  //       tag: "h1",
+  //     },
+  //   ],
+  // };
 
   @ViewChild('template', { static: true }) template: TemplateRef<any>;
   @ViewChild('confirm', {static: true}) confirm: TemplateRef<any>;

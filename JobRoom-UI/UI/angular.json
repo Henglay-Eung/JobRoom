@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "job-room-ui"
+  "defaultProject": "job-room-ui",
+  "cli": {
+    "analytics": false
+  }
 }
