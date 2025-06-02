@@ -15,20 +15,20 @@ export class DashboardService {
   countActiveAnnouncement(id): Observable<any> {
     
     return this.http.get(
-      this.baseAPI.baseApi + "announcements/company/count-active/" + id
+      this.baseAPI.baseApiHR + "announcements/company/count-active/" + id
     );
   }
 
   //TODO: to count close announcement
   countCloseAnnouncement(id): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApi + "announcements/company/count-close/" + id
+      this.baseAPI.baseApiHR + "announcements/company/count-close/" + id
     );
   }
 
   //TODO: to count canidate by active announcement and company
   countCandidateByActiveAnnouncementAndCompany(id): Observable<any> {
-    return this.http.get(this.baseAPI.baseApi + "candidates/count/" + id);
+    return this.http.get(this.baseAPI.baseApiHR + "candidates/count/" + id);
   }
 
   //TODO: to count set schedule

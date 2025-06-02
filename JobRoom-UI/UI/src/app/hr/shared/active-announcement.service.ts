@@ -19,7 +19,7 @@ export class ActiveAnnouncementService {
     currentPage
   ): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApi +
+      this.baseAPI.baseApiHR +
         "announcements/company/active-announcement/" +
         id +
         "?caption=" +
@@ -39,7 +39,7 @@ export class ActiveAnnouncementService {
     currentPage
   ): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApi +
+      this.baseAPI.baseApiHR +
         "announcements/company/active-announcement-by-date/" +
         id +
         "?startDate=" +

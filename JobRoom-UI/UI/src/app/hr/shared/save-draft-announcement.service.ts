@@ -19,7 +19,7 @@ export class SaveDraftAnnouncementService {
     currentPage
   ): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApi +
+      this.baseAPI.baseApiHR +
         "announcements/company/draft/" +
         id +
         "?caption=" +
@@ -39,7 +39,7 @@ export class SaveDraftAnnouncementService {
     currentPage
   ): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApi +
+      this.baseAPI.baseApiHR +
         "announcements/company/draft-by-date/" +
         id +
         "?startDate=" +

@@ -19,7 +19,7 @@ export class ClosedAnnouncementService {
     currentPage
   ): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApi +
+      this.baseAPI.baseApiHR +
         "announcements/company/closed-announcement/" +
         id +
         "?page=" +
@@ -39,7 +39,7 @@ export class ClosedAnnouncementService {
     currentPage
   ): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApi +
+      this.baseAPI.baseApiHR +
         "announcements/company/closed-announcement-by-date/" +
         id +
         "?startDate=" +
