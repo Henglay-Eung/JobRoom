@@ -376,7 +376,7 @@ public class AnnouncementServiceImp implements AnnouncementService {
     @Override
     public Page<AnnouncementDto> selectActiveAnnouncementByCompanyId(int id, String caption, Date currentDate, Pageable pageable) {
 
-        Page<Announcement> announcements = announcementRepository.findAllByCompanyIdAndCaptionContainingIgnoreCaseAndClosedDateGreaterThanAndStatusIsTrueAndIsBannedIsFalseAndIsDraftIsFalse(id,caption,currentDate,pageable);
+        Page<Announcement> announcements = announcementRepository.findAllByCompanyIdAndClosedDateGreaterThanAndStatusIsTrueAndIsBannedIsFalseAndIsDraftIsFalse(id, currentDate,pageable);
 
         PaginationUtils<AnnouncementDto, Page<Announcement>> paging = new PaginationUtils<>(AnnouncementDto.class);
         paging.setData(announcements);
@@ -419,7 +419,6 @@ public class AnnouncementServiceImp implements AnnouncementService {
                 };
 
         getToken();
-        System.out.println(token);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));

@@ -83,4 +83,7 @@ public interface AnnouncementRepository extends JpaRepository<Announcement, Inte
     ///TODO find Save Draft announcement by company , isBanned false ,isDraft true ,status true
 
     Page<Announcement> findAllByCompanyIdAndCreatedDateBetweenAndStatusIsTrueAndIsBannedIsFalseAndIsDraftIsTrue(int companyId,Date start,Date end,Pageable pageable);
+
+    //TODO: Find active announcement =========================================================
+    Page<Announcement> findAllByCompanyIdAndClosedDateGreaterThanAndStatusIsTrueAndIsBannedIsFalseAndIsDraftIsFalse(int id, Date currentDate,Pageable pageable);
 }

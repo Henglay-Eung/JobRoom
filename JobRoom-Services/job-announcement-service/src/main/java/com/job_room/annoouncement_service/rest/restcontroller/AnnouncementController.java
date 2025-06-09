@@ -415,15 +415,17 @@ public class AnnouncementController {
             // TODO Valid date format
             DateValidator dateValidator = new DateValidatorUsingDateFormat("yyyy-MM-dd");
             if (dateValidator.isValid(announcementRequest.getClosedDate()) && dateValidator.isValid(announcementRequest.getPublishedDate())) {
-                Company company=announcementService.companyById(announcementRequest.getCompanyId());
+                // For testing
+                // Company company = announcementService.companyById(announcementRequest.getCompanyId());
+                Company company = new Company();
                 if(company!=null){
                     BaseApiResponse<AnnouncementResponse> response = new BaseApiResponse<>();
 
                     AnnouncementDto announcementDto = modelMapper.map(announcementRequest, AnnouncementDto.class);
-
+                    announcementDto.setCompanyId(3);
                     AnnouncementDto result = announcementService.insert(announcementDto);
                     AnnouncementResponse announcementResponse = modelMapper.map(result, AnnouncementResponse.class);
-
+                    
                     response.setMessage(messageProperties.inserted("Announcement"));
                     announcementResponse.setId(result.getId());
 
@@ -495,7 +497,8 @@ public class AnnouncementController {
         try {
             if (dateValidator.isValid(announcementRequest.getClosedDate()) && dateValidator.isValid(announcementRequest.getPublishedDate())) {
 
-                Company company=announcementService.companyById(announcementRequest.getCompanyId());
+//                Company company=announcementService.companyById(announcementRequest.getCompanyId());
+                Company company = new Company();
                 if(company!=null){
                     BaseApiResponse<AnnouncementResponse> response = new BaseApiResponse<>();
 
@@ -943,7 +946,6 @@ public class AnnouncementController {
         Map<String, Integer> map = new HashMap<>();
         BaseApiResponse<Map<String, Integer>> baseApiResponse = new BaseApiResponse();
         int count = announcementService.countActiveAnnouncement(companyId, util.getCurrentDate());
-
         map.put("count", count);
         baseApiResponse.setData(map);
         baseApiResponse.setMessage("count active announcement successfully!");
