@@ -32,7 +32,7 @@ export class EachAnnouncementService {
         startDate +
         "&endDate=" +
         endDate +
-        "&position=swe"
+        "&position"
     );
   }
 }
