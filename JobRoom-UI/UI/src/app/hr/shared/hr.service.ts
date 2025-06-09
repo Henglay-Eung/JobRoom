@@ -14,7 +14,7 @@ export class HrService {
   //TODO: to get candidate by announcement
   getCandidateByAnnouncement(id, currentPage): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApiHR +
+      this.baseAPI.baseApiAnnouncement +
         "candidates/announcement/" +
         id +
         "?page=" +
@@ -25,7 +25,7 @@ export class HrService {
   //TODO: to get announcement by company
   getAnnouncementByCompany(id, currentPage, caption): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApiHR +
+      this.baseAPI.baseApiAnnouncement +
         "announcements/company/" +
         id +
         "?page=" +
@@ -38,7 +38,7 @@ export class HrService {
   //TODO: to filter candidate between start date and end date
   filterCandidateByDate(id, startDate, endDate, currentPage): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApiHR +
+      this.baseAPI.baseApiAnnouncement +
         "candidates/company/" +
         id +
         "/filterDate?endDate=" +
@@ -54,18 +54,18 @@ export class HrService {
   //TODO: to get position by company
   getPositionByCompany(id): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApiHR + "announcements/company/list-position/" + id
+      this.baseAPI.baseApiAnnouncement + "announcements/company/list-position/" + id
     );
   }
 
   //TODO: to delete candidate by id
   deleteCandidate(id): Observable<any> {
-    return this.http.delete(this.baseAPI.baseApiHR + "candidates/" + id);
+    return this.http.delete(this.baseAPI.baseApiAnnouncement + "candidates/" + id);
   }
 
   //TODO : delete active announcement by id
   deleteAnnouncement(id): Observable<any> {
-    return this.http.delete(this.baseAPI.baseApiHR + "announcements/" + id);
+    return this.http.delete(this.baseAPI.baseApiAnnouncement + "announcements/" + id);
   }
 
   //TODO: to details company by id

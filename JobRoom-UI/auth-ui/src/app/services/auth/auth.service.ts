@@ -24,6 +24,6 @@ export class AuthService {
   }
 
   signUpHR(hr:any){
-    return this._http.post('https://gateway.kshrd-ite.com/auth/register/hr',hr);
+    return this._http.post('http://localhost:8083/register/hr',hr);
   }
 }

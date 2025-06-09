@@ -49,8 +49,12 @@ export class SettingComponent implements OnInit {
   ) {
     translate.setDefaultLang(this.datas);
     translate.use(this.datas);
-    translate.setDefaultLang("ar");
-    this.idHr = this.cookie.get("id",true,"hrd")
+    translate.setDefaultLang("en");
+    // For testing purpose
+    // this.idHr = this.cookie.get("id", true, "hrd");
+    // For production, uncomment the line below
+    // and comment the line above
+    this.idHr = "3";
   }
 
   ngOnInit() {

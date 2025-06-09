@@ -120,7 +120,7 @@ export class CreateAnnouncementComponent implements OnInit {
   ) {
     translate.setDefaultLang(this.datas);
     translate.use(this.datas);
-    translate.setDefaultLang("ar");
+    translate.setDefaultLang("en");
     this.idHr = this.cookie.get("id",true,"hrd");
     this.hrService.getHrDetails(this.idHr).subscribe((res: any)=>{
       this.logo = res.data.logo;
@@ -538,6 +538,9 @@ export class CreateAnnouncementComponent implements OnInit {
 
   //TODO: to preview announcement
   onPreview() {
+    console.log("idPreview: ", this.idPreview);
+    console.log("idUpdate: ", this.idUpdate);
+    
     if(this.idPreview !== this.idUpdate){
       this.isAddMode = true;
     }
@@ -546,7 +549,8 @@ export class CreateAnnouncementComponent implements OnInit {
       this.JobAnounForm.get("header").get("close_date").value,
       "yyyy-MM-dd"
     );
-    if(this.isAddMode == false){
+    console.log("isAddMode: ", this.isAddMode);
+    if(!this.isAddMode){
       this.announcement = {
         banned: false,
         caption: this.JobAnounForm.get("header").get("title").value,
@@ -571,6 +575,7 @@ export class CreateAnnouncementComponent implements OnInit {
           this.myLoading = false;
         }
         this.idPreview = res.data.id;
+        this.idUpdate = res.data.id;
         if(res.message == "Announcement has been inserted successfully"){
           this.myLoading = false;
         }else if (res.message == "Announcement is failed to insert"){
@@ -581,7 +586,7 @@ export class CreateAnnouncementComponent implements OnInit {
         );
         window.open(url, '_blank');
       });
-    }else if (this.isAddMode == true){
+    }else {
       this.announcement = {
         banned: false,
         caption: this.JobAnounForm.get("header").get("title").value,

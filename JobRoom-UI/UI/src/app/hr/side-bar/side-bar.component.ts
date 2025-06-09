@@ -36,9 +36,16 @@ export class SideBarComponent implements OnInit {
       this.isHide = false;
     });
 
-    this.translate.setDefaultLang(this.data);
-    this.translate.use(this.data);
-    this.idHr = this.cookie.get("id",true,"hrd")
+    translate.setDefaultLang('en');
+    if (this.data) {
+      translate.use(this.data);
+    } else {
+      translate.use('en');
+      sessionStorage.setItem('changlang', JSON.stringify('en'));
+    }
+    // For testing purpose
+    // this.idHr = this.cookie.get("id",true,"hrd")
+    this.idHr = "3";
   }
 
   //read only switch language
@@ -47,7 +54,7 @@ export class SideBarComponent implements OnInit {
     { value: "en", label: "English", img: "assets/img/english.png" },
   ];
 
-  public language = this.languages[0];
+  public language = this.languages[1];
   //function change local string
   changeLocale(locale: string) {
     this.language = this.languages.find((lang) => lang.value === locale);
@@ -81,11 +88,12 @@ export class SideBarComponent implements OnInit {
         }else if(res.data.logo == ""){
           this.hrLogo = "https://www.speakersbank.org.au/wp-content/uploads/2016/01/photo-icon.png";
         }else{
-          this.hrLogo = res.data.logo;
+          this.hrLogo = "https://avatars.githubusercontent.com/u/64820856?s=400&u=a91832a54da9d118d010c8ef60ae450b6d0d7012&v=4";
         }
       })
     });
     this.hrService.getHrDetails(this.idHr).subscribe((res: any)=>{
+      console.log("res = ", res);
       if(res.data.logo == undefined){
         this.hrLogo = "https://www.speakersbank.org.au/wp-content/uploads/2016/01/photo-icon.png";
       }else if(res.data.logo == null){

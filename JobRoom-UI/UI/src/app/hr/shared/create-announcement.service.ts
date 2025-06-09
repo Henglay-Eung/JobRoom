@@ -13,32 +13,32 @@ export class CreateAnnouncementService {
 
   //TODO: to post job announcement
   postJobAnnouncement(object: Object) {
-    return this.http.post(this.baseAPI.baseApiHR + "announcements", object);
+    return this.http.post(this.baseAPI.baseApiAnnouncement + "announcements", object);
   }
 
   //TODO: to update job announcement
   updateJobAnnouncement(object: Object, id: any) {
     return this.http.put(
-      this.baseAPI.baseApiHR + "announcements" + `/${id}`,
+      this.baseAPI.baseApiAnnouncement + "announcements" + `/${id}`,
       object
     );
   }
 
   //TODO: to post to preview job announcement
   postToPreview(object: Object) {
-    return this.http.post(this.baseAPI.baseApiHR + "announcements", object);
+    return this.http.post(this.baseAPI.baseApiAnnouncement + "announcements", object);
   }
 
   //TODO: to update to preview job announcement
   updateToPreview(object: Object, id: any) {
     return this.http.put(
-      this.baseAPI.baseApiHR + "announcements" + `/${id}`,
+      this.baseAPI.baseApiAnnouncement + "/announcements" + `/${id}`,
       object
     );
   }
 
   //TODO: to get job announcement by id
   getJobAnnouncementById(id) {
-    return this.http.get(this.baseAPI.baseApiHR + "announcements/" + id);
+    return this.http.get(this.baseAPI.baseApiAnnouncement + "/announcements/" + id);
   }
 }

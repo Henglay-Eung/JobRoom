@@ -90,7 +90,7 @@ export class SignUpHrComponent implements OnInit {
   }
     //TODO: submit
   onSubmit() {
-
+    console.log(this.form.value);
     this.auth.signUpHR(this.form.value).subscribe((data: any) => {
       this.router.navigate([''])
     })

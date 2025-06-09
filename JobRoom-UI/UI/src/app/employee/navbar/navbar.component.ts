@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit{
   ) {
       this.translate.setDefaultLang(this.data);
       this.translate.use(this.data);
-      translate.setDefaultLang('ar');
+      translate.setDefaultLang('en');
       this.userID = this.cookie.get("id",true,"hrd");
   }
 
@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit{
     { value: 'en', label: 'English', img: 'assets/img/english.png' },
   ];
 
-  public language = this.languages[0];
+  public language = this.languages[1];
 
   //function change local string
   changeLocale(locale: string) {
@@ -67,7 +67,7 @@ export class NavbarComponent implements OnInit{
 
   ngOnInit(){
     // For testing
-    this.userID = "1";
+    this.userID = "3";
     this.employeeService.getEmployeeDetails(this.userID).subscribe((res: any)=>{
       this.employee = res.data;
     })

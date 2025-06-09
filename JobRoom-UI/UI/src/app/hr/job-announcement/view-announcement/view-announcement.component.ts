@@ -44,7 +44,7 @@ export class ViewAnnouncementComponent implements OnInit {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
     translate.setDefaultLang(this.data);
     translate.use(this.data);
-    translate.setDefaultLang("ar");
+    translate.setDefaultLang("en");
   }
 
 

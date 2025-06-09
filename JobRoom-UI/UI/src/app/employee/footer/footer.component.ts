@@ -32,7 +32,7 @@ export class FooterComponent implements OnInit {
     });
     translate.setDefaultLang(this.data);
     translate.use(this.data);
-    translate.setDefaultLang("ar");
+    translate.setDefaultLang("en");
     this.idHr = this.cookie.get("id", true,"hrd");
   }
   

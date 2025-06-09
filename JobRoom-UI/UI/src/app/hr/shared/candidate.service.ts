@@ -14,7 +14,7 @@ export class CandidateService {
   //TODO: to get data of candidate by company id
   getCandidateCompanyId(id, currentPage): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApiHR +
+      this.baseAPI.baseApiAnnouncement +
         "candidates/company/" +
         id +
         "?page=" +
@@ -26,7 +26,7 @@ export class CandidateService {
   //TODO: to search candidate
   searchCandidate(id, currentPage, name): Observable<any> {
     return this.http.get(
-      this.baseAPI.baseApiHR +
+      this.baseAPI.baseApiAnnouncement +
         "candidates/company/" +
         id +
         "/search?" +
@@ -40,6 +40,6 @@ export class CandidateService {
 
   //TODO: to get candidate by id
   getCandidateById(id) {
-    return this.http.get(this.baseAPI.baseApiHR + "candidates/" + id);
+    return this.http.get(this.baseAPI.baseApiAnnouncement + "candidates/" + id);
   }
 }

@@ -57,8 +57,11 @@ export class SaveDraftListComponent implements OnInit {
   ) {
     translate.setDefaultLang(this.datas);
     translate.use(this.datas);
-    translate.setDefaultLang("ar");
-    this.idHr = this.cookie.get("id",true,"hrd");
+    translate.setDefaultLang("en");
+    // For testing purpose
+    // this.idHr = this.cookie.get("id", true, "hrd");
+    // Replace with actual HR ID retrieval logic
+    this.idHr = "3"
   }
 
   //TODO: to open delete modal

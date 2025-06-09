@@ -26,14 +26,13 @@ export class EachAnnouncementService {
   ): Observable<any> {
     return this.http.get(
       this.baseAPI.baseApiAnnouncement +
-        "/announcements-employees/?page=" +
+        "announcements-employees/?page=" +
         currentPage +
         "&startDate=" +
         startDate +
         "&endDate=" +
         endDate +
-        "&position=" +
-        position
+        "&position=swe"
     );
   }
 }

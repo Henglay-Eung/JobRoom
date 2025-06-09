@@ -29,10 +29,16 @@ export class DashboardComponent implements OnInit {
     private hrService: HrService,
     private dashboardService: DashboardService
   ) {
-    translate.setDefaultLang(this.datas);
-    translate.use(this.datas);
-    translate.setDefaultLang("ar");
-    this.idHr = this.cookie.get("id",true,"hrd")
+    translate.setDefaultLang('en');
+    if (this.datas) {
+      translate.use(this.datas);
+    } else {
+      translate.use('en');
+      sessionStorage.setItem('changlang', JSON.stringify('en'));
+    }
+    // For testing purpose
+    // this.idHr = this.cookie.get("id",true,"hrd")
+    this.idHr = "3"; // Hardcoded for testing, replace with actual logic to get HR ID
   }
 
   ngOnInit(): void {

@@ -169,10 +169,13 @@ export class CandidateComponent implements OnInit {
     this.bsRangeValue = [this.bsValue, this.maxDate];
     translate.setDefaultLang(this.datas);
     translate.use(this.datas);
-    translate.setDefaultLang("ar");
+    translate.setDefaultLang("en");
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
-    this.idHr = this.cookie.get("id",true,"hrd")
+    // For testing purpose
+    // this.idHr = this.cookie.get("id", true, "hrd");
+    // Replace with actual HR ID retrieval logic
+    this.idHr = "3"; // For testing purpose, replace with actual HR ID retrieval logic
   }
 
   name = "Angular 6";

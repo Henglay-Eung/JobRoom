@@ -55,7 +55,7 @@ export class SlideComponent implements OnInit {
               private cookie:NgxEncryptCookieService,
               private shareData:ShareDataService
               ) {
-    translate.setDefaultLang('ar');
+    translate.setDefaultLang('en');
     translate.setDefaultLang(this.datas);
     translate.use(this.datas);
   }
@@ -79,7 +79,8 @@ export class SlideComponent implements OnInit {
   //TODO: get data to detail job seeker
   getEmployeeDetails(){
     let userIdAsString = this.cookie.get("userId",true,"hrd")
-    let userId = parseInt(userIdAsString)
+    // let userId = parseInt(userIdAsString)
+    let userId = 3; // For testing purpose
     this.employeeService.getEmployeeDetails(userId).subscribe((res:any)=>{
       this.employeeDetails = res.data.data
     })

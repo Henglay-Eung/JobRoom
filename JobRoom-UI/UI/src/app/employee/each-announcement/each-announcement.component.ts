@@ -40,7 +40,7 @@ export class EachAnnouncementComponent implements OnInit {
     private eachAnnouncementService: EachAnnouncementService,
     private shareData: ShareDataService
   ) {
-    translate.setDefaultLang("ar");
+    translate.setDefaultLang("en");
     translate.setDefaultLang(this.datas);
     translate.use(this.datas);
   }

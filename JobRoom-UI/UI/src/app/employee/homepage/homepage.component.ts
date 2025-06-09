@@ -42,19 +42,23 @@ export class HomepageComponent implements OnInit {
               private eachAnnouncementService: EachAnnouncementService,
               private employeeService:EmployeeService,
               private cookie:NgxEncryptCookieService) {
-    translate.setDefaultLang('ar');
-    translate.setDefaultLang(this.datas);
-    translate.use(this.datas);
-
-
-
+    translate.setDefaultLang('en');
+    if (this.datas) {
+      translate.use(this.datas);
+    } else {
+      translate.use('en');
+      sessionStorage.setItem('changlang', JSON.stringify('en'));
+    }
   }
 
   ngOnInit() {
+    // For testing purpose
     this.i18nService.localeEvent.subscribe((locale) => {
       this.language = locale,
         sessionStorage.setItem('changlang', JSON.stringify(this.language))
     });
+
+
     this.eachAnnouncementService.search.subscribe(data=>{
       this.getAllAnnouncement("","",this.searchValue,data-1)
     })
@@ -67,9 +71,11 @@ export class HomepageComponent implements OnInit {
   }
 
   //TODO: get data to detail employee
-  getEmployeeDetails(){
+  getEmployeeDetails() {
+    
     let userIdAsString = this.cookie.get("userId",true,"hrd")
-    let userId = parseInt(userIdAsString)
+    // let userId = parseInt(userIdAsString)
+    let userId = "3"; // For testing purpose, remove this line in production
     this.employeeService.getEmployeeDetails(userId).subscribe((res:any)=>{
       this.employeeDetails = res.data.data
     })

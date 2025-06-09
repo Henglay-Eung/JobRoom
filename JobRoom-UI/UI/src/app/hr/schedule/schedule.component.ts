@@ -173,7 +173,7 @@ export class ScheduleComponent implements OnInit {
 
     translate.setDefaultLang(this.data);
     translate.use(this.data);
-    translate.setDefaultLang("ar");
+    translate.setDefaultLang("en");
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
     this.idHr = this.cookie.get("id",true,"hrd");
