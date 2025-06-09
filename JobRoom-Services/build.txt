@@ -1,2 +1,6 @@
-docker compose run --rm gradle -p job-announcement-service build: to run build job-announcement-service
-docker compose run --rm gradle -p auth-service build:  to run build auth-service
+docker compose run --rm gradle -p ./job-announcement-service build -x test: to run build job-announcement-service
+docker compose run --rm gradle -p ./auth-service build -x test:  to run build auth-service
+docker compose run --rm gradle -p ./employee-service build -x test:  to run build auth-service
+docker compose run --rm gradle -p ./hr-service build -x test: to run build hr-service
+docker compose run --rm gradle -p ./schedule-service build -x test: to run build schedule-service
+docker compose up -d --build: to run the services
