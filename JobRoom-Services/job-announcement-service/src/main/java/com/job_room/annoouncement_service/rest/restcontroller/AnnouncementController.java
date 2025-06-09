@@ -504,14 +504,12 @@ public class AnnouncementController {
 
                     AnnouncementDto announcementDto = modelMapper.map(announcementRequest, AnnouncementDto.class);
                     announcementDto.setId(id);
+                    announcementDto.setCompanyId(3);
                     AnnouncementDto announcementResponseDto = announcementService.update(announcementDto);
                     if (announcementResponseDto == null) {
-
                         response.setMessage(messageProperties.updatedError("announcement"));
                         response.setStatus(HttpStatus.NO_CONTENT);
-
                     } else {
-
                         AnnouncementResponse announcementResponse = modelMapper.map(announcementResponseDto, AnnouncementResponse.class);
                         response.setMessage(messageProperties.updated("announcement"));
                         response.setData(announcementResponse);

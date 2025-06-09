@@ -4,4 +4,5 @@ export class BaseAPI {
   public baseApiHR="http://localhost:8084/api/v1/"
   public baseApiSchedule="http://localhost:8085/api/v1/"
   public baseApiAuth="https://gateway.kshrd-ite.com/auth/"
+  public baseApiEmployee="http://localhost:8082/api/v1/"
 }
